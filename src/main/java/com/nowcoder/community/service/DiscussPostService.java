@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * @author 伏辰
  * @date 2022/6/30
- * 帖子服务层接口
+ * 帖子-服务层
  */
 
 public interface DiscussPostService {

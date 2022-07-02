@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * @author 伏辰
  * @date 2022/6/30
- * 帖子服务层实现类
+ * 帖子-服务层-实现类
  */
 @Service
 public class DiscussPostServiceImpl implements DiscussPostService {

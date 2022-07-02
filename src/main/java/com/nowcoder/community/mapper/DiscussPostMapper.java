@@ -9,6 +9,7 @@ import java.util.List;
 /**
  * @author 伏辰
  * @date 2022/6/30
+ * 帖子-持久层
  */
 @Mapper
 public interface DiscussPostMapper {

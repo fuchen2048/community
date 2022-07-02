@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 /**
  * @author 伏辰
  * @date 2022/6/29
+ * 用户-持久层
  */
 @Mapper
 public interface UserMapper {

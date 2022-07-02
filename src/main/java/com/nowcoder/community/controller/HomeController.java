@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.thymeleaf.spring5.context.webmvc.SpringWebMvcThymeleafRequestContext;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,6 +18,7 @@ import java.util.Map;
 /**
  * @author 伏辰
  * @date 2022/6/30
+ * 首页-控制层
  */
 @Controller
 public class HomeController {
@@ -29,6 +29,12 @@ public class HomeController {
 	@Autowired
 	public DiscussPostService discussPostService;
 	
+	/**
+	 * 前往首页，处理帖子显示数据
+	 * @param model 模型
+	 * @param page 页面
+	 * @return 页面
+	 */
 	@GetMapping("/index")
 	public String getIndexPage(Model model, Page page){
 		//SpringMVC会自动实例化Model和Page,并将Page注入Model
