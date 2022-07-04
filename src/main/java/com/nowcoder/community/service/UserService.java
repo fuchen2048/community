@@ -34,4 +34,15 @@ public interface UserService {
 	 * @return 激活状态码
 	 */
 	Integer activation(Integer userId, String code);
+	
+	/**
+	 * 用户登录
+	 * @param username 用户名
+	 * @param password 密码
+	 * @param expiredSeconds 时间
+	 * @return Map集合
+	 */
+	Map<String, Object> login(String username, String password, Integer expiredSeconds);
+	
+	void logout(String ticket);
 }

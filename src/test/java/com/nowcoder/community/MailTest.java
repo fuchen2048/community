@@ -26,7 +26,7 @@ public class MailTest {
 	
 	@Test
 	public void testTextMail(){
-		mailClient.sendMail("fuchen1024@qq.com", "TEST", "测试邮件！！！");
+		mailClient.sendMail("3213821843@qq.com", "TEST", "掖吊吧，小虚逼！！！");
 	}
 	
 	@Test
@@ -37,7 +37,7 @@ public class MailTest {
 		String content = templateEngine.process("/mail/demo", context);
 		System.out.println(content);
 		
-		mailClient.sendMail("fuchen1024@qq.com", "HTML", "测试邮件！！！");
+		mailClient.sendMail("fuchen1024@qq.com", "HTML", "测试");
 	}
 	
 }
