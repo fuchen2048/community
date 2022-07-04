@@ -1,5 +1,6 @@
 package com.nowcoder.community.service;
 
+import com.nowcoder.community.entity.LoginTicket;
 import com.nowcoder.community.entity.User;
 import com.nowcoder.community.util.CommunityConstant;
 import org.springframework.stereotype.Service;
@@ -44,5 +45,16 @@ public interface UserService {
 	 */
 	Map<String, Object> login(String username, String password, Integer expiredSeconds);
 	
+	/**
+	 * 退出登录
+	 * @param ticket 登录凭证
+	 */
 	void logout(String ticket);
+	
+	/**
+	 * 查询登录凭证
+	 * @param ticket
+	 * @return
+	 */
+	LoginTicket findLoginTicket(String ticket);
 }

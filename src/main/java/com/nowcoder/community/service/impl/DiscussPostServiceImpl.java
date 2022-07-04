@@ -24,9 +24,7 @@ public class DiscussPostServiceImpl implements DiscussPostService {
 	
 	@Override
 	public Integer findDiscussPostRows(Integer userId) {
-		System.out.println("这里是service" + userId);
 		Integer rows = discussPostMapper.selectDiscussPostRows(userId);
-		System.out.println(rows);
 		return rows;
 	}
 }

@@ -147,7 +147,7 @@ public class LoginController implements CommunityConstant {
 			cookie.setPath(contextPath);
 			cookie.setMaxAge(expireSeconds);
 			response.addCookie(cookie);
-			System.out.println("123");
+			
 			return "redirect:/index";
 		} else {
 			model.addAttribute("usernameMsg", map.get("usernameMsg"));
@@ -158,6 +158,6 @@ public class LoginController implements CommunityConstant {
 	@GetMapping("/logout")
 	public String logout(@CookieValue("ticket") String ticket){
 		userService.logout(ticket);
-		return "redirect:/index";
+		return "redirect:/login";
 	}
 }

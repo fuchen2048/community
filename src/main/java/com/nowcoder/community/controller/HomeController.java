@@ -41,8 +41,6 @@ public class HomeController {
 		page.setRows(discussPostService.findDiscussPostRows(0));
 		page.setPath("/index");
 		
-		System.out.println(page.getTotal());
-		
 		List<DiscussPost> list = discussPostService.findDiscussPosts(0, page.getOffset(), page.getLimit());
 		List<Map<String, Object>> discussPosts = new ArrayList<>();
 		if (list != null && list.size()>0) {

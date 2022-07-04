@@ -160,7 +160,6 @@ public class UserServiceImpl implements UserService , CommunityConstant {
 		loginTicket.setExpired(new Date(System.currentTimeMillis() + expiredSeconds * 1000));
 		Integer integer = loginTicketMapper.insertLoginTicket(loginTicket);
 		
-		System.out.println("成功添加" + integer);
 		map.put("ticket", loginTicket.getTicket());
 		
 		return map;
@@ -169,5 +168,10 @@ public class UserServiceImpl implements UserService , CommunityConstant {
 	@Override
 	public void logout(String ticket) {
 		loginTicketMapper.updateStatus(ticket, 1);
+	}
+	
+	@Override
+	public LoginTicket findLoginTicket(String ticket) {
+		return loginTicketMapper.selectByTicket(ticket);
 	}
 }
