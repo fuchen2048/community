@@ -1,4 +1,13 @@
-# 工程简介
+# niuke社区实现
 
-# 延伸阅读
+**开发工具：**
+IntelliJ IDEA
+
+**相关技术：**
+* SpringBoot
+* Mybatis
+* Thymeleaf
+* Mysql
+* lombok
+* Slf4j
 
