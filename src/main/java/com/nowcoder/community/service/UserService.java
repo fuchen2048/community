@@ -57,4 +57,12 @@ public interface UserService {
 	 * @return
 	 */
 	LoginTicket findLoginTicket(String ticket);
+	
+	/**
+	 * 修改header
+	 * @param userId 用户id
+	 * @param header
+	 * @return 修改行数
+	 */
+	Integer updateHeader(Integer userId, String header);
 }
