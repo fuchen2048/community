@@ -1,5 +1,6 @@
 package com.nowcoder.community.controller;
 
+import com.nowcoder.community.annotation.LoginRequired;
 import com.nowcoder.community.entity.User;
 import com.nowcoder.community.service.UserService;
 import com.nowcoder.community.util.CommunityUtil;
@@ -44,6 +45,11 @@ public class UserController {
 	@Autowired
 	private HostHolder hostHolder;
 	
+	/**
+	 * 去setting页面
+	 * @return 返回setting页面
+	 */
+	@LoginRequired
 	@GetMapping("/setting")
 	public String getSettingPage(){
 		return "/site/setting";
@@ -55,6 +61,7 @@ public class UserController {
 	 * @param model 视图模板
 	 * @return 响应页面
 	 */
+	@LoginRequired
 	@PostMapping("/upload")
 	public String uploadHeader(MultipartFile headerImg, Model model){
 		if (headerImg == null) {
@@ -88,6 +95,11 @@ public class UserController {
 		return "redirect:/index";
 	}
 	
+	/**
+	 * 获取头像
+	 * @param filename 从请求路径中获取文件名
+	 * @param response 用于响应图片
+	 */
 	@GetMapping("/header/{filename}")
 	public void getHeader(@PathVariable("filename") String filename, HttpServletResponse response){
 		//服务器存放路径
