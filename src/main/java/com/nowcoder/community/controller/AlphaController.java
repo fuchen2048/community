@@ -5,10 +5,7 @@ import com.nowcoder.community.util.CommunityUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.CookieValue;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.Cookie;
@@ -130,4 +127,17 @@ public class AlphaController {
 		System.out.println(session.getAttribute("name"));
 		return "get session";
 	}
+	
+	@PostMapping("/ajax")
+	@ResponseBody
+	public String testAjax(String name, int age){
+		System.out.println(name);
+		System.out.println(age);
+		return CommunityUtil.getJsonString(0, "ok");
+	}
+	@GetMapping("/ajax")
+	public String gerAjax(){
+		return "/demo";
+	}
+	
 }

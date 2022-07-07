@@ -1,5 +1,6 @@
 package com.nowcoder.community.service;
 
+import ch.qos.logback.core.rolling.helper.IntegerTokenConverter;
 import com.nowcoder.community.entity.DiscussPost;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
@@ -29,4 +30,18 @@ public interface DiscussPostService {
 	 * @return 返回帖子数量
 	 */
 	Integer findDiscussPostRows(Integer userId);
+	
+	/**
+	 * 发布的帖子
+	 * @param post 帖子对象
+	 * @return 添加行数
+	 */
+	Integer addDiscussPost(DiscussPost post);
+	
+	/**
+	 * 查询帖子
+	 * @param id 帖子的id
+	 * @return 查询的结果DiscussPost对象
+	 */
+	DiscussPost findDiscussPost(Integer id);
 }

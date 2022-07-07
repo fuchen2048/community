@@ -28,4 +28,19 @@
 			and user_id = #{userId}
 		</if>
 	</select>
+	
+	<!--Integer insertDiscussPost(DiscussPost discussPost);-->
+	<insert id="insertDiscussPost" parameterType="DiscussPost">
+		insert into discuss_post (user_id, title, content, type, status, create_time, comment_count, score)
+		values (#{userId}, #{title}, #{content}, #{type},
+		        #{status}, #{createTime}, #{commentCount}, #{score})
+	</insert>
+	
+	<!--DiscussPost selectDiscussPost(@Param("id") Integer id);-->
+	<select id="selectDiscussPost" resultType="DiscussPost">
+		select <include refid="selectFields"></include>
+		from discuss_post
+		where id = #{id}
+	</select>
+
 </mapper>

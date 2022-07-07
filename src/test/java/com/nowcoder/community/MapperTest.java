@@ -106,4 +106,20 @@ public class MapperTest {
 		LoginTicket loginTicket = loginTicketMapper.selectByTicket("123456");
 		System.out.println(loginTicket);
 	}
+	
+	@Test
+	public void testDiscussPost(){
+		//'149', '测试', '测试',0, 0, '2019-05-20 17:41:30', 16, 1755.2095150145426)
+		DiscussPost discussPost = new DiscussPost();
+		discussPost.setUserId(149);
+		discussPost.setTitle("再测试");
+		discussPost.setContent("再测试");
+		discussPost.setType(0);
+		discussPost.setStatus(0);
+		discussPost.setCreateTime(new Date());
+		discussPost.setCommentCount(15);
+		discussPost.setScore(1755.2095150145426);
+		discussPostMapper.insertDiscussPost(discussPost);
+	}
+	
 }

@@ -28,4 +28,18 @@ public interface DiscussPostMapper {
 	 * @return 用户发帖条数
 	 */
 	Integer selectDiscussPostRows(@Param("userId") Integer userId);
+	
+	/**
+	 * 保存帖子
+	 * @param discussPost 帖子的内容
+	 * @return 添加的行数
+	 */
+	Integer insertDiscussPost(DiscussPost discussPost);
+	
+	/**
+	 * 查询帖子详情
+	 * @param id 帖子的id
+	 * @return 帖子对象
+	 */
+	DiscussPost selectDiscussPost(@Param("id") Integer id);
 }
