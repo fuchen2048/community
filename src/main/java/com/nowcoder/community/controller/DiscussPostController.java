@@ -11,7 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.lang.model.element.NestingKind;
 import java.util.Date;
 
 /**
@@ -43,9 +42,6 @@ public class DiscussPostController {
 		discussPost.setTitle(title);
 		discussPost.setContent(content);
 		discussPost.setCreateTime(new Date());
-		//自己添加
-		discussPost.setType(0);
-		discussPost.setStatus(0);
 		
 		discussPostService.addDiscussPost(discussPost);
 		
