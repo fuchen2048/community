@@ -1,8 +1,10 @@
 package com.nowcoder.community;
 
+import com.nowcoder.community.entity.Comment;
 import com.nowcoder.community.entity.DiscussPost;
 import com.nowcoder.community.entity.LoginTicket;
 import com.nowcoder.community.entity.User;
+import com.nowcoder.community.mapper.CommentMapper;
 import com.nowcoder.community.mapper.DiscussPostMapper;
 import com.nowcoder.community.mapper.LoginTicketMapper;
 import com.nowcoder.community.mapper.UserMapper;
@@ -34,6 +36,9 @@ public class MapperTest {
 	
 	@Autowired
 	private LoginTicketMapper loginTicketMapper;
+	
+	@Autowired
+	private CommentMapper commentMapper;
 	
 	@Test
 	public void testSelect(){
@@ -120,6 +125,17 @@ public class MapperTest {
 		discussPost.setCommentCount(15);
 		discussPost.setScore(1755.2095150145426);
 		discussPostMapper.insertDiscussPost(discussPost);
+	}
+	
+	@Test
+	public void testComment(){
+		List<Comment> list = commentMapper.selectCommentByEntity(1, 228, 0, 10);
+		for (Comment comment : list) {
+			System.out.println(comment);
+		}
+		
+		int count = commentMapper.selectCountByEntity(1, 228);
+		System.out.println(count);
 	}
 	
 }
