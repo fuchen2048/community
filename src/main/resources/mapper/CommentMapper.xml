@@ -19,6 +19,12 @@
 		where entity_id = #{entityId} and entity_type = #{entityType}
 	</select>
 	
+	<!--int insertComment(Comment comment);-->
+	<insert id="insertComment" parameterType="Comment" keyProperty="id">
+		insert into comment (id, user_id, entity_type, entity_id, target_id, content, status, create_time)
+		values (#{id},#{userId},#{entityType},#{entityId},#{targetId},#{content},#{status},#{createTime})
+	</insert>
 
-	
+
+
 </mapper>

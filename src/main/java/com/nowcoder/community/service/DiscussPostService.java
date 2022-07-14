@@ -44,4 +44,12 @@ public interface DiscussPostService {
 	 * @return 查询的结果DiscussPost对象
 	 */
 	DiscussPost findDiscussPost(Integer id);
+	
+	/**
+	 * 修改帖子数量
+	 * @param id 帖子id
+	 * @param commentCount 需要修改字段的值
+	 * @return 修改行数
+	 */
+	Integer updateCommentCount(Integer id, Integer commentCount);
 }

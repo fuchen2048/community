@@ -138,4 +138,19 @@ public class MapperTest {
 		System.out.println(count);
 	}
 	
+	@Test
+	public void testInterComment(){
+		Comment comment = new Comment();
+		comment.setUserId(153);
+		comment.setEntityId(154);
+		comment.setEntityType(1);
+		comment.setContent("测试");
+		comment.setStatus(0);
+		comment.setTargetId(0);
+		comment.setCreateTime(new Date());
+		int row = commentMapper.insertComment(comment);
+		
+		System.out.println(row);
+	}
+	
 }

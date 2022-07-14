@@ -29,5 +29,12 @@ public interface CommentService {
 	 * @return 返回总数
 	 */
 	Integer findCountByEntity(Integer entityType, Integer entityId);
+	
+	/**
+	 * 添加帖子
+	 * @param comment 需要添加帖子的实体
+	 * @return 添加的行数
+	 */
+	Integer addComment(Comment comment);
 
 }

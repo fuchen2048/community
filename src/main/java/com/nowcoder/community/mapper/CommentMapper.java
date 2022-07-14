@@ -30,4 +30,11 @@ public interface CommentMapper {
 	 * @return 返回总数
 	 */
 	int selectCountByEntity(@Param("entityType") Integer entityType, @Param("entityId") Integer entityId);
+	
+	/**
+	 * 增加帖子
+	 * @param comment 需要增加的实体类对象
+	 * @return 添加条数
+	 */
+	int insertComment(Comment comment);
 }

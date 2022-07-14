@@ -42,4 +42,12 @@ public interface DiscussPostMapper {
 	 * @return 帖子对象
 	 */
 	DiscussPost selectDiscussPost(@Param("id") Integer id);
+	
+	/**
+	 * 更新帖子的数量
+	 * @param id 帖子的id
+	 * @param commentCount 更新comment_count数量
+	 * @return 更新行数
+	 */
+	Integer updateCommentCount(@Param("id") Integer id, @Param("commentCount") Integer commentCount);
 }
