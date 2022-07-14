@@ -50,4 +50,18 @@ public interface MessageService {
 	 * @return 未读私信数量
 	 */
 	Integer findLetterUnreadCount(Integer userId, String conversationId);
+	
+	/**
+	 * 新增消息
+	 * @param message 需要新增的消息实体
+	 * @return 增加行数
+	 */
+	Integer addMessage(Message message);
+	
+	/**
+	 * 修改消息的状态
+	 * @param ids id的List集合
+	 * @return 修改行数
+	 */
+	Integer readMessage(List<Integer> ids);
 }

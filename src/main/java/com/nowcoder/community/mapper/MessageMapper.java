@@ -1,5 +1,6 @@
 package com.nowcoder.community.mapper;
 
+import ch.qos.logback.core.rolling.helper.IntegerTokenConverter;
 import com.nowcoder.community.entity.Message;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -54,5 +55,19 @@ public interface MessageMapper {
 	 */
 	Integer selectLetterUnreadCount(@Param("userId") Integer userId, @Param("conversationId") String conversationId);
 	
+	/**
+	 * 新增消息
+	 * @param message 需要新增的消息实体
+	 * @return 增加行数
+	 */
+	Integer insertMessage(Message message);
+	
+	/**
+	 * 修改消息的状态
+	 * @param ids id的List集合
+	 * @param status 状态码
+	 * @return 修改行数
+	 */
+	Integer updateStatus(@Param("ids") List<Integer> ids, @Param("status") Integer status);
 	
 }

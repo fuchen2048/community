@@ -179,4 +179,9 @@ public class UserServiceImpl implements UserService , CommunityConstant {
 	public Integer updateHeader(Integer userId, String header) {
 		return userMapper.updateHeader(userId, header);
 	}
+	
+	@Override
+	public User findUserByName(String username) {
+		return userMapper.selectByName(username);
+	}
 }

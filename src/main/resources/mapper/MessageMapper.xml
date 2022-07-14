@@ -4,6 +4,19 @@
 		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.nowcoder.community.mapper.MessageMapper">
 	
+	<insert id="insertMessage" keyProperty="id" parameterType="Message">
+		insert into message (from_id, to_id, conversation_id, content, status, create_time)
+		values (#{fromId}, #{toId}, #{conversationId}, #{content}, #{status}, #{createTime})
+	</insert>
+	
+	<update id="updateStatus">
+		update message set status = #{status}
+		where id in
+		<foreach collection="ids" item="id" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</update>
+	
 	<!--List<Message> selectConversations(@Param("userId") Integer userId, @Param("offset") Integer offset, @Param("limit") Integer limit);-->
 	<select id="selectConversations" resultType="com.nowcoder.community.entity.Message" >
 		select id, from_id, to_id, conversation_id, content, status, create_time

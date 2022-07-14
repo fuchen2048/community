@@ -65,4 +65,11 @@ public interface UserService {
 	 * @return 修改行数
 	 */
 	Integer updateHeader(Integer userId, String header);
+	
+	/**
+	 * 通过用户名查询用户信息
+	 * @param username 用户名
+	 * @return 用户信息
+	 */
+	User findUserByName(String username);
 }
