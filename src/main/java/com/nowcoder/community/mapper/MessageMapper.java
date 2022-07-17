@@ -45,7 +45,7 @@ public interface MessageMapper {
 	 * @param conversationId 私信id
 	 * @return 私信数量
 	 */
-	Integer selectLetterCount(String conversationId);
+	Integer selectLetterCount(@Param("conversationId")String conversationId);
 	
 	/**
 	 * 查询用户私信未读数量
@@ -53,7 +53,7 @@ public interface MessageMapper {
 	 * @param conversationId  私信id
 	 * @return 未读私信数量
 	 */
-	Integer selectLetterUnreadCount(Integer userId, String conversationId);
+	Integer selectLetterUnreadCount(@Param("userId") Integer userId, @Param("conversationId")String conversationId);
 	
 	/**
 	 * 新增消息

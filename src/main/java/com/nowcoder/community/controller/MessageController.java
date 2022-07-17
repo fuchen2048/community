@@ -50,7 +50,7 @@ public class MessageController {
 				Map<String, Object> map = new HashMap<>();
 				map.put("conversation", message);
 				map.put("letterCount", messageService.findLetterCount(message.getConversationId()));
-				map.put("unreadCount", messageService.findLetterUnreadCount(user.getId(), message.getConversationId() ));
+				map.put("unreadCount", messageService.findLetterUnreadCount(user.getId(), message.getConversationId()));
 				
 				//查询私信用户的id
 				int targetId = user.getId() == message.getFromId() ? message.getToId() : message.getFromId();

@@ -2,6 +2,7 @@ package com.nowcoder.community.controller;
 
 import com.nowcoder.community.annotation.LoginRequired;
 import com.nowcoder.community.entity.User;
+import com.nowcoder.community.service.LikeService;
 import com.nowcoder.community.service.UserService;
 import com.nowcoder.community.util.CommunityUtil;
 import com.nowcoder.community.util.HostHolder;
@@ -41,6 +42,9 @@ public class UserController {
 	
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private LikeService likeService;
 	
 	@Autowired
 	private HostHolder hostHolder;
@@ -121,6 +125,24 @@ public class UserController {
 		} catch (IOException e) {
 			log.error("读写图像失败！" + e.getMessage());
 		}
+	}
+	
+	/**
+	 * 个人主页
+	 * @param userId 用户id
+	 * @param model
+	 * @return
+	 */
+	@GetMapping("/profile/{userId}")
+	public String getProfilePage(@PathVariable("userId") Integer userId, Model model){
+		User user = userService.findById(userId);
+		if (user == null) {
+		    throw new RuntimeException("用户不存在");
+		}
+		model.addAttribute("user", user);
+		Integer userLikeCount = likeService.findUserLikeCount(userId);
+		model.addAttribute("likeCount", userLikeCount);
+		return "/site/profile";
 	}
 
 }
