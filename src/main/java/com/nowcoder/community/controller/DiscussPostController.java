@@ -6,6 +6,7 @@ import com.nowcoder.community.entity.Page;
 import com.nowcoder.community.entity.User;
 import com.nowcoder.community.service.CommentService;
 import com.nowcoder.community.service.DiscussPostService;
+import com.nowcoder.community.service.LikeService;
 import com.nowcoder.community.service.UserService;
 import com.nowcoder.community.util.CommunityConstant;
 import com.nowcoder.community.util.CommunityUtil;
@@ -33,6 +34,9 @@ public class DiscussPostController implements CommunityConstant {
 	
 	@Autowired
 	private CommentService commentService;
+	
+	@Autowired
+	private LikeService likeService;
 	
 	@Autowired
 	private HostHolder hostHolder;
@@ -64,6 +68,12 @@ public class DiscussPostController implements CommunityConstant {
 		//作者
 		User user = userService.findById(discussPost.getUserId());
 		model.addAttribute("user",user);
+		//点赞数量
+		long likeCount = likeService.findEntityLikeCount(ENTITY_TYPE_POST, discussPostId);
+		model.addAttribute("likeCount",likeCount);
+		//点赞状态
+		Integer likeStatus = hostHolder.getUser() == null ? 0 : likeService.findEntityLikeStatus(hostHolder.getUser().getId(), ENTITY_TYPE_POST, discussPostId);
+		model.addAttribute("likeStatus",likeStatus);
 		
 		//评论分页信息
 		page.setLimit(5);
@@ -79,6 +89,12 @@ public class DiscussPostController implements CommunityConstant {
 				map.put("comment", comment);
 				map.put("user",userService.findById(comment.getUserId()));
 				//回复
+				//评论数量
+				likeCount = likeService.findEntityLikeCount(ENTITY_TYPE_COMMENT, comment.getId());
+				map.put("likeCount",likeCount);
+				//评论数量
+				likeStatus = hostHolder.getUser() == null ? 0 : likeService.findEntityLikeStatus(hostHolder.getUser().getId(), ENTITY_TYPE_COMMENT, comment.getId());
+				map.put("likeStatus",likeStatus);
 				
 				List<Comment> replyList = commentService.findCommentsByEntity(ENTITY_TYPE_COMMENT, comment.getId(), 0, Integer.MAX_VALUE);
 				List<Map<String, Object>> replyListVo = new ArrayList<>();
@@ -87,6 +103,13 @@ public class DiscussPostController implements CommunityConstant {
 						Map<String, Object> replyMap = new HashMap<>();
 						replyMap.put("reply", reply);
 						replyMap.put("user", userService.findById(reply.getUserId()));
+						
+						//点赞数量
+						likeCount = likeService.findEntityLikeCount(ENTITY_TYPE_COMMENT, reply.getId());
+						replyMap.put("likeCount",likeCount);
+						//点赞数量
+						likeStatus = hostHolder.getUser() == null ? 0 : likeService.findEntityLikeStatus(hostHolder.getUser().getId(), ENTITY_TYPE_COMMENT, reply.getId());
+						replyMap.put("likeStatus",likeStatus);
 						
 						User target = reply.getTargetId() == 0 ? null : userService.findById(reply.getTargetId());
 						replyMap.put("target", target);

@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
  * @date 2022/7/4
  */
 @Slf4j
-@Component
+//@Component
 public class Alphainterceptor implements HandlerInterceptor {
 	
 	//Controller之前执行
