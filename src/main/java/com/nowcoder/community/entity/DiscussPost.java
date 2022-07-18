@@ -24,6 +24,6 @@ public class DiscussPost {
 	private int type;
 	private int status;
 	private Date createTime;
-	private Integer commentCount;
+	private int commentCount;
 	private Double score;
 }

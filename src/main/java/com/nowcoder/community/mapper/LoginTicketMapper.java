@@ -10,6 +10,7 @@ import org.apache.ibatis.annotations.Param;
  * 登录凭证-持久层
  */
 @Mapper
+@Deprecated
 public interface LoginTicketMapper {
 	/**
 	 * 添加登录凭证
