@@ -36,5 +36,12 @@ public interface CommentService {
 	 * @return 添加的行数
 	 */
 	Integer addComment(Comment comment);
+	
+	/**
+	 * 根据id查询comment
+	 * @param id
+	 * @return
+	 */
+	Comment findCommentById(Integer id);
 
 }
