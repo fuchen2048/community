@@ -1,6 +1,8 @@
 package com.nowcoder.community.service;
 
 import com.nowcoder.community.entity.Message;
+import org.apache.ibatis.annotations.Param;
+import org.springframework.expression.spel.ast.StringLiteral;
 
 import java.util.List;
 
@@ -64,4 +66,38 @@ public interface MessageService {
 	 * @return 修改行数
 	 */
 	Integer readMessage(List<Integer> ids);
+	
+	/**
+	 * 查询某个主题下的最新通知
+	 * @param userId
+	 * @param topic
+	 * @return
+	 */
+	Message findLatestNotice(Integer userId, String topic);
+	
+	/**
+	 * 查询某个主题所包含的通知数量
+	 * @param userId
+	 * @param topic
+	 * @return
+	 */
+	Integer findNoticeCount(Integer userId, String topic);
+	
+	/**
+	 * 查询未读消息数量
+	 * @param userId
+	 * @param topic
+	 * @return
+	 */
+	Integer findNoticeUnreadCount(Integer userId, String topic);
+	
+	/**
+	 * 查询某个主题中包含的通知列表
+	 * @param userID
+	 * @param topic
+	 * @param offset
+	 * @param limit
+	 * @return
+	 */
+	List<Message> findNotices(Integer userID, String topic, Integer offset, Integer limit);
 }
