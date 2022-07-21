@@ -1,13 +1,8 @@
 package com.nowcoder.community.controller;
 
-import com.nowcoder.community.entity.Comment;
-import com.nowcoder.community.entity.DiscussPost;
-import com.nowcoder.community.entity.Page;
-import com.nowcoder.community.entity.User;
-import com.nowcoder.community.service.CommentService;
-import com.nowcoder.community.service.DiscussPostService;
-import com.nowcoder.community.service.LikeService;
-import com.nowcoder.community.service.UserService;
+import com.nowcoder.community.entity.*;
+import com.nowcoder.community.event.EventProducer;
+import com.nowcoder.community.service.*;
 import com.nowcoder.community.util.CommunityConstant;
 import com.nowcoder.community.util.CommunityUtil;
 import com.nowcoder.community.util.HostHolder;
@@ -41,6 +36,12 @@ public class DiscussPostController implements CommunityConstant {
 	@Autowired
 	private HostHolder hostHolder;
 	
+	@Autowired
+	private EventProducer eventProducer;
+	
+	@Autowired
+	private ElasticsearchService elasticsearchService;
+	
 	@PostMapping("/add")
 	@ResponseBody
 	public String addDiscussPost(String title, String content) {
@@ -55,6 +56,16 @@ public class DiscussPostController implements CommunityConstant {
 		discussPost.setCreateTime(new Date());
 		
 		discussPostService.addDiscussPost(discussPost);
+		
+		//触发帖子事件
+		Event event = new Event()
+				.setTopic(TOPIC_PUBLISH)
+				.setUserId(user.getId())
+				.setEntityType(ENTITY_TYPE_POST)
+				.setEntityId(discussPost.getId());
+		eventProducer.fireEvent(event);
+		
+		//elasticsearchService.saveDiscussPost(discussPost);
 		
 		//报错的情况将来统一处理
 		return CommunityUtil.getJsonString(0, "发布成功！");
