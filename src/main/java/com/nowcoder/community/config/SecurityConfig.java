@@ -34,6 +34,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements Comm
 		http.authorizeRequests()
 				.antMatchers("/user/setting", "/user/upload", "/discuss/add", "/comment/add", "/notice/**", "/letter/**", "/like", "/follow", "/unfollow")
 				.hasAnyAuthority(AUTHORITY_USER, AUTHORITY_ADMIN, AUTHORITY_MODERATOR)
+				.antMatchers("/discuss/top", "/discuss/wonderful").hasAnyAuthority(AUTHORITY_MODERATOR)
+				.antMatchers("/discuss/delete", "/data/**").hasAnyAuthority(AUTHORITY_ADMIN)
 				.anyRequest().permitAll()
 				.and().csrf().disable();
 		//权限不够时处理
@@ -43,9 +45,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements Comm
 					@Override
 					public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException e) throws IOException, ServletException {
 						String xRequestWith = request.getHeader("x-requested-with");
-						if ("XMLHTTPRequest".equals(xRequestWith)) {
-							response.setContentType("application/plain;charset-utf-8");
-							response.getWriter().write(CommunityUtil.getJsonString(4, "您还没有登录!"));
+						if ("XMLHttpRequest".equals(xRequestWith)) {
+							response.setContentType("application/plain;charset=utf-8");
+							response.getWriter().write(CommunityUtil.getJsonString(1, "您还没有登录!"));
 						} else {
 							response.sendRedirect(request.getContextPath() + "/login");
 						}
@@ -56,9 +58,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements Comm
 					@Override
 					public void handle(HttpServletRequest request, HttpServletResponse response, AccessDeniedException e) throws IOException, ServletException {
 						String xRequestWith = request.getHeader("x-requested-with");
-						if ("XMLHTTPRequest".equals(xRequestWith)) {
-							response.setContentType("application/plain;charset-utf-8");
-							response.getWriter().write(CommunityUtil.getJsonString(4, "您没有访问此功能的权限!"));
+						if ("XMLHttpRequest".equals(xRequestWith)) {
+							response.setContentType("application/plain;charset=utf-8");
+							response.getWriter().write(CommunityUtil.getJsonString(1, "您没有访问此功能的权限!"));
 						} else {
 							response.sendRedirect(request.getContextPath() + "/denied");
 						}

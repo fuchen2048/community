@@ -20,7 +20,7 @@ public interface DiscussPostMapper {
 	 * @param limit 每页显示条数
 	 * @return 帖子的集合
 	 */
-	List<DiscussPost> selectDiscussPosts(@Param("userId") Integer userId, @Param("offset") Integer offset, @Param("limit") Integer limit);
+	List<DiscussPost> selectDiscussPosts(@Param("userId") Integer userId, @Param("offset") Integer offset, @Param("limit") Integer limit, @Param("orderMode") Integer orderMode);
 	
 	/**
 	 * 查询用户发帖条数
@@ -50,4 +50,29 @@ public interface DiscussPostMapper {
 	 * @return 更新行数
 	 */
 	Integer updateCommentCount(@Param("id") Integer id, @Param("commentCount") Integer commentCount);
+	
+	/**
+	 * 修改类型
+	 * @param id 帖子id
+	 * @param type 帖子类型
+	 * @return
+	 */
+	Integer updateType(@Param("id") Integer id, @Param("type") Integer type);
+	
+	/**
+	 * 修改状态
+	 * @param id 帖子id
+	 * @param status 帖子状态
+	 * @return
+	 */
+	Integer updateStatus(@Param("id") Integer id, @Param("status") Integer status);
+	
+	/**
+	 * 修改分数
+	 * @param id 帖子id
+	 * @param score 分数
+	 * @return
+	 */
+	Integer updateScore(@Param("id") Integer id, @Param("score") Double score);
+	
 }

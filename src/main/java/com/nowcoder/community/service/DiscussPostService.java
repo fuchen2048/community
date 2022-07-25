@@ -22,7 +22,7 @@ public interface DiscussPostService {
 	 * @param limit 每页显示条数
 	 * @return 帖子的集合
 	 */
-	List<DiscussPost> findDiscussPosts(Integer userId, Integer offset, Integer limit);
+	List<DiscussPost> findDiscussPosts(Integer userId, Integer offset, Integer limit, Integer orderMode);
 	
 	/**
 	 * 查询用户帖子总数
@@ -52,4 +52,28 @@ public interface DiscussPostService {
 	 * @return 修改行数
 	 */
 	Integer updateCommentCount(Integer id, Integer commentCount);
+	
+	/**
+	 * 修改类型
+	 * @param id 帖子id
+	 * @param type 帖子类型
+	 * @return
+	 */
+	Integer updateType(Integer id, Integer type);
+	
+	/**
+	 * 修改状态
+	 * @param id 帖子id
+	 * @param status 帖子状态
+	 * @return
+	 */
+	Integer updateStatus(Integer id, Integer status);
+	
+	/**
+	 * 修改分数
+	 * @param id 帖子id
+	 * @param score 分数
+	 * @return
+	 */
+	Integer updateScore(Integer id, Double score);
 }
