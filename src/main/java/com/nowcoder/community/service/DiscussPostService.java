@@ -22,14 +22,14 @@ public interface DiscussPostService {
 	 * @param limit 每页显示条数
 	 * @return 帖子的集合
 	 */
-	List<DiscussPost> findDiscussPosts(Integer userId, Integer offset, Integer limit, Integer orderMode);
+	List<DiscussPost> findDiscussPosts(int userId, int offset, int limit, int orderMode);
 	
 	/**
 	 * 查询用户帖子总数
 	 * @param userId 用户id
 	 * @return 返回帖子数量
 	 */
-	Integer findDiscussPostRows(Integer userId);
+	int findDiscussPostRows(int userId);
 	
 	/**
 	 * 发布的帖子
