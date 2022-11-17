@@ -46,7 +46,13 @@ public class DiscussPostController implements CommunityConstant {
 	
 	@Autowired
 	private RedisTemplate redisTemplate;
-	
+
+	/**
+	 * 发布
+	 * @param title 主题
+	 * @param content 正文
+	 * @return 发布结果
+	 */
 	@PostMapping("/add")
 	@ResponseBody
 	public String addDiscussPost(String title, String content) {
@@ -80,7 +86,14 @@ public class DiscussPostController implements CommunityConstant {
 		//报错的情况将来统一处理
 		return CommunityUtil.getJsonString(0, "发布成功！");
 	}
-	
+
+	/**
+	 * 根据帖子id获取帖子内容
+	 * @param discussPostId 帖子id
+	 * @param model 模型
+	 * @param page 页面
+	 * @return
+	 */
 	@GetMapping("/detail/{discussPostId}")
 	public String getDiscussPost (@PathVariable("discussPostId") Integer discussPostId, Model model, Page page) {
 		//帖子

@@ -41,7 +41,13 @@ public class CommentController implements CommunityConstant {
 	
 	@Autowired
 	private RedisTemplate redisTemplate;
-	
+
+	/**
+	 * 添加评论
+	 * @param discussPostId 帖子id
+	 * @param comment
+	 * @return
+	 */
 	@PostMapping("/add/{discussPostId}")
 	public String addComment(@PathVariable("discussPostId")int discussPostId, Comment comment){
 		if (comment == null) {

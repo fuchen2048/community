@@ -62,5 +62,5 @@ public interface UserMapper {
 	 * @param password 用户需要修改的密码
 	 * @return 修改的行数
 	 */
-	Integer updatePassword(int id, String password);
+	Integer updatePassword(@Param("id") int id, @Param("password") String password);
 }

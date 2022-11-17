@@ -1,5 +1,6 @@
 package com.nowcoder.community.service;
 
+import ch.qos.logback.core.rolling.helper.IntegerTokenConverter;
 import com.nowcoder.community.entity.LoginTicket;
 import com.nowcoder.community.entity.User;
 import com.nowcoder.community.util.CommunityConstant;
@@ -74,6 +75,22 @@ public interface UserService {
 	 * @return 用户信息
 	 */
 	User findUserByName(String username);
+
+
+	/**
+	 * 发送邮箱验证码
+	 * @param email 邮箱
+	 */
+	void verificationCode(String email);
+
+
+	/**
+	 * 根据邮箱修改密码
+	 * @param email 邮箱
+	 * @param password 需要修改的密码
+	 * @return
+	 */
+	User updatePassword(String email, String password);
 	
 	Collection<? extends GrantedAuthority> getAuthorities(Integer userId);
 }

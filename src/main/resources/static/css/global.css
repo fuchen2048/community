@@ -18,10 +18,11 @@ body {
 .container {
 	width: 960px;
 	padding: 0;
+	color: #1d2124;
 }
 
 header .navbar-brand {
-	background: url('http://static.nowcoder.com/images/res/logo/logo-v3.png') no-repeat;
+	background: url('http://localhost:9000/community/img/logo_1.ico') no-repeat;
 	background-size: 147px 42px;
 	width: 147px;
 	height: 42px;
@@ -53,6 +54,7 @@ footer .qrcode {
 
 footer .detail-info{
 	border-left: 1px solid #888;
+	/*border-left: 1px solid #31b0d5;*/
 }
 
 footer .company-info li {
@@ -83,6 +85,7 @@ b {
 }
 
 a {
+	/*color: #31b0d5;*/
 	color: #000;
 }
 
@@ -132,6 +135,19 @@ a:hover {
 
 .bg-gray {
 	background: #eff0f2;
+}
+
+/**
+导航栏颜色
+ */
+.bg-blue {
+	background: #2388e7;
+}
+/**
+登录按钮颜色
+ */
+.btn-customColor {
+	background-color: #2388e7;
 }
 
 .user-header {

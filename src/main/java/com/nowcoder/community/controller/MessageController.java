@@ -120,7 +120,12 @@ public class MessageController implements CommunityConstant {
 			return userService.findById(id0);
 		}
 	}
-	
+
+	/**
+	 * 获取私信id
+	 * @param letterList
+	 * @return
+	 */
 	private List<Integer> getLetterIds(List<Message> letterList){
 		List<Integer> ids = new ArrayList<>();
 		

@@ -25,7 +25,7 @@ import java.io.*;
 /**
  * @author 伏辰
  * @date 2022/7/5
- *
+ * 用户个人信息
  */
 @Slf4j
 @Controller
@@ -72,18 +72,18 @@ public class UserController implements CommunityConstant {
 	@LoginRequired
 	@RequestMapping(path = "/setting", method = RequestMethod.GET)
 	public String getSettingPage(Model model) {
-		// 上传文件名称
-		String fileName = CommunityUtil.generateUUID();
-		// 设置响应信息
-		StringMap policy = new StringMap();
-		policy.put("returnBody", CommunityUtil.getJsonString(0));
-		// 生成上传凭证
-		Auth auth = Auth.create(accessKey, secretKey);
-		String uploadToken = auth.uploadToken(headerBucketName, fileName, 3600, policy);
-		
-		model.addAttribute("uploadToken", uploadToken);
-		model.addAttribute("fileName", fileName);
-		
+		//// 上传文件名称
+		//String fileName = CommunityUtil.generateUUID();
+		//// 设置响应信息
+		//StringMap policy = new StringMap();
+		//policy.put("returnBody", CommunityUtil.getJsonString(0));
+		//// 生成上传凭证
+		//Auth auth = Auth.create(accessKey, secretKey);
+		//String uploadToken = auth.uploadToken(headerBucketName, fileName, 3600, policy);
+		//
+		//model.addAttribute("uploadToken", uploadToken);
+		//model.addAttribute("fileName", fileName);
+
 		return "/site/setting";
 	}
 	
@@ -128,7 +128,7 @@ public class UserController implements CommunityConstant {
 			return "/site/setting";
 		}
 		
-		//生成随机文件命
+		//生成随机文件名
 		filename = CommunityUtil.generateUUID() + suffix;
 		File dest = new File(uploadPath + "/" + filename);
 		
@@ -208,5 +208,25 @@ public class UserController implements CommunityConstant {
 		
 		return "/site/profile";
 	}
+
+
+	/**
+	 * 我的帖子
+	 * @return
+	 */
+	@GetMapping("/my-post")
+	public String getMyPost(){
+		return "/site/my-post";
+	}
+
+	/**
+	 *我的回复
+	 */
+	@GetMapping("/my-reply")
+	public String getMyReply(){
+		return "/site/my-reply";
+	}
+
+
 
 }

@@ -20,6 +20,7 @@ import java.util.Map;
 /**
  * @author 伏辰
  * @date 2022/7/21
+ * 搜索
  */
 @Controller
 public class SearchController implements CommunityConstant {
@@ -31,7 +32,14 @@ public class SearchController implements CommunityConstant {
 	
 	@Autowired
 	private LikeService likeService;
-	
+
+	/**
+	 * 搜索
+	 * @param keyword 关键字
+	 * @param model 模型
+	 * @param page 页面
+	 * @return
+	 */
 	@GetMapping("/search")
 	public String search(String keyword, Model model, Page page) {
 		//搜索帖子

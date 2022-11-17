@@ -36,16 +36,16 @@ public class HomeController implements CommunityConstant {
 	private LikeService likeService;
 	
 	/**
-	 * 前往首页，处理帖子显示数据
+	 * 前往拼团，处理帖子显示数据
 	 * @param model 模型
 	 * @param page 页面
-	 * @return 页面
+	 * @return
 	 */
-	@GetMapping("/index")
+	@GetMapping("/site/group")
 	public String getIndexPage(Model model, Page page ,@RequestParam(name = "orderMode", defaultValue = "0") int orderMode){
 		//SpringMVC会自动实例化Model和Page,并将Page注入Model
 		page.setRows(discussPostService.findDiscussPostRows(0));
-		page.setPath("/index?orderMode=" +  orderMode);
+		page.setPath("/site/group?orderMode=" +  orderMode);
 		
 		List<DiscussPost> list = discussPostService.findDiscussPosts(0, page.getOffset(), page.getLimit(), orderMode);
 		List<Map<String, Object>> discussPosts = new ArrayList<>();
@@ -63,14 +63,23 @@ public class HomeController implements CommunityConstant {
 		}
 		model.addAttribute("discussPosts", discussPosts);
 		model.addAttribute("orderMode", orderMode);
-		return "/index";
+		return "/site/group";
 	}
-	
+
+
+	/**
+	 * 服务器异常-返回500
+	 * @return
+	 */
 	@GetMapping("/error")
 	public String getErrorPage(){
 		return "/error/500";
 	}
-	
+
+	/**
+	 * 未找到异常-返回404
+	 * @return
+	 */
 	@GetMapping("/denied")
 	public String getDeniedPage(){
 		return "/error/404";

@@ -14,10 +14,8 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.CookieValue;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+import org.thymeleaf.context.Context;
 
 import javax.imageio.ImageIO;
 import javax.servlet.http.Cookie;
@@ -146,7 +144,18 @@ public class LoginController implements CommunityConstant {
 			log.error("响应验证码失败" + e.getMessage());
 		}
 	}
-	
+
+	/**
+	 * 登录
+	 * @param username 用户名
+	 * @param password 密码
+	 * @param code 验证码
+	 * @param rememberMe 记住我
+	 * @param model 模型
+	 * @param response
+	 * @param kaptchaOwner
+	 * @return
+	 */
 	@PostMapping("/login")
 	public String login(String username, String password, String code, boolean rememberMe, Model model, /*HttpSession session,*/ HttpServletResponse response, @CookieValue("kaptchaOwner") String kaptchaOwner){
 		
@@ -173,17 +182,79 @@ public class LoginController implements CommunityConstant {
 			cookie.setMaxAge(expireSeconds);
 			response.addCookie(cookie);
 			
-			return "redirect:/index";
+			return "redirect:/site/group";
 		} else {
 			model.addAttribute("usernameMsg", map.get("usernameMsg"));
 			model.addAttribute("passwordMsg", map.get("passwordMsg"));
 			return "/site/login";
 		}
 	}
+
+	/**
+	 * 退出登录
+	 * @param ticket cookie
+	 * @return
+	 */
 	@GetMapping("/logout")
 	public String logout(@CookieValue("ticket") String ticket){
 		userService.logout(ticket);
 		SecurityContextHolder.clearContext();
 		return "redirect:/login";
 	}
+
+
+	/**
+	 * 进入forget页面
+	 * @return
+	 */
+	@GetMapping("/forget")
+	public String getForget() {
+		return "/site/forget";
+	}
+
+
+	/**
+	 * 发送邮箱验证码
+	 * @return
+	 */
+	@PostMapping("/verificationCode")
+	@ResponseBody
+	public void getVerificationCode(Model model, String email) {
+
+		if (!(email == null || email.isEmpty())) {
+			userService.verificationCode(email);
+			model.addAttribute("msg", "验证码已发送，请前往邮箱查看~~~");
+		} else {
+			model.addAttribute("msg", "邮箱为空！");
+		}
+	}
+
+	/**
+	 * 重置密码
+	 * @param email 邮箱
+	 * @param code 验证码
+	 * @param password 新密码
+	 */
+	@PostMapping("/resetPassword")
+	public String resetPassword(Model model, String email, String code, String password){
+
+		if (email == null || email.isEmpty()) {
+			throw new IllegalArgumentException("重置密码：email不允许空！");
+		}
+		if (code == null || code.isEmpty()) {
+			throw new IllegalArgumentException("重置密码：code不允许空！");
+		}
+		if (password == null || password.isEmpty()) {
+			throw new IllegalArgumentException("重置密码：password不允许空！");
+		}
+
+		String verificationCode = redisTemplate.opsForValue().get("verificationCode").toString();
+		if (!verificationCode.equals(code)) {
+			model.addAttribute("msg", "验证码错误！");
+		}
+		User user = userService.updatePassword(email, password);
+
+		return "/site/login";
+	}
+
 }

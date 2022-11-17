@@ -2,7 +2,7 @@ package com.nowcoder.community.service.impl;
 
 import com.nowcoder.community.service.LikeService;
 import com.nowcoder.community.util.RedisKeyUtil;
-import jdk.dynalink.Operation;
+//import jdk.dynalink.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.redis.core.RedisOperations;

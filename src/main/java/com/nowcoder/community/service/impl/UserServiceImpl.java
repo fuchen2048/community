@@ -206,7 +206,34 @@ public class UserServiceImpl implements UserService , CommunityConstant {
 	public User findUserByName(String username) {
 		return userMapper.selectByName(username);
 	}
-	
+
+	@Override
+	public void verificationCode(String email) {
+		Context context = new Context();
+		context.setVariable("email", email);
+		int code = (int) ((Math.random() * 9 + 1) * 100000);
+		context.setVariable("code" , code);
+		String content = templateEngine.process("/mail/forget", context);
+		mailClient.sendMail(email, "验证码", content);
+		redisTemplate.opsForValue().set("verificationCode", code);
+	}
+
+
+	/**
+	 * 根据邮箱修改密码
+	 * @param email 邮箱
+	 * @param password 需要修改的密码
+	 * @return
+	 */
+	@Override
+	public User updatePassword(String email, String password) {
+		User user = userMapper.selectByEmail(email);
+		user.setPassword(CommunityUtil.md5(password + user.getSalt()));
+		userMapper.updatePassword(user.getId(), user.getPassword());
+		System.out.println(user);
+		return user;
+	}
+
 	/**
 	 * 优先从缓存中取值
 	 * @param userId
