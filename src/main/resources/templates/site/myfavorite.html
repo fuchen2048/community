@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8">
+        <title>拼团旅游信息网-我的收藏</title>
+        <link rel="icon" th:href="@{/img/logo_1.ico}"/>
+        <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+        <link rel="stylesheet" th:href="@{/css/bootstrap-theme.min.css}"/>
+        <link rel="stylesheet" th:href="@{/css/search1.css}">
+        <!--<link rel="stylesheet" type="text/css" th:href="@{/css/common.css}">-->
+        <link rel="stylesheet" th:href="@{/css/index.css}">
+
+        <link rel="stylesheet" th:href="@{/css/global.css}">
+        <script th:src="@{/js/jquery-3.3.1.js}"></script>
+
+        <style>
+           .tab-content .row>div {
+            margin-top: 16px;
+           }
+           .tab-content {
+            margin-bottom: 36px;
+           }
+       </style>
+    </head>
+    <body>
+
+    <div class="nk-container">
+    <!--引入头部-->
+    <!-- <div id="header"></div> -->
+    <!-- 头部 start -->
+    <header class="bg-blue sticky-top" style="box-shadow: 0px 0px 8px #2388e7" th:replace="index::header"/>
+    <!-- 头部 end -->
+
+        <!-- 内容 -->
+        <div class="main">
+            <div class="container" style="width: 1200px ; height: 950px ">
+                <div class="position-relative">
+                    <!-- 筛选条件 -->
+                    <ul class="nav nav-tabs mb-3">
+                        <li class="nav-item">
+                            <a class="nav-link active" th:href="@{/site/favorite}">我的收藏</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " href="">收藏排行榜</a>
+                        </li>
+                    </ul>
+            </div>
+
+                <div class="row row-cols-1 row-cols-md-4">
+                    <div class="col mb-4">
+                        <div class="card h-100">
+                            <img th:src="@{/images/04-search_04.jpg}" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">故宫</h5>
+                                <p class="card-text">故宫又名紫禁城，是中国乃至世界上保存最完整，规模最大的木质结构古建筑群，被誉为“世界五大宫之首”</p>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">2019-04-15 15:32:18</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col mb-4">
+                        <div class="card h-100">
+                            <img src="..." class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">This is a short card.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col mb-4">
+                        <div class="card h-100">
+                            <img src="..." class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col mb-4">
+                        <div class="card h-100">
+                            <img src="..." class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col mb-4">
+                        <div class="card h-100">
+                            <img th:src="@{/images/04-search_04.jpg}" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">故宫</h5>
+                                <p class="card-text">故宫又名紫禁城，是中国乃至世界上保存最完整，规模最大的木质结构古建筑群，被誉为“世界五大宫之首”</p>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">Last updated 3 mins ago</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col mb-4">
+                        <div class="card h-100">
+                            <img th:src="@{/images/04-search_04.jpg}" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">故宫</h5>
+                                <p class="card-text">故宫又名紫禁城，是中国乃至世界上保存最完整，规模最大的木质结构古建筑群，被誉为“世界五大宫之首”</p>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">Last updated 3 mins ago</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col mb-4">
+                        <div class="card h-100">
+                            <img th:src="@{/images/04-search_04.jpg}" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">故宫</h5>
+                                <p class="card-text">故宫又名紫禁城，是中国乃至世界上保存最完整，规模最大的木质结构古建筑群，被誉为“世界五大宫之首”</p>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">Last updated 3 mins ago</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col mb-4">
+                        <div class="card h-100">
+                            <img th:src="@{/images/04-search_04.jpg}" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">故宫</h5>
+                                <p class="card-text">故宫又名紫禁城，是中国乃至世界上保存最完整，规模最大的木质结构古建筑群，被誉为“世界五大宫之首”</p>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">Last updated 3 mins ago</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item" ><a class="page-link" href="#">2</a></li>
+                        <li class="page-item active"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">4</a></li>
+                        <li class="page-item"><a class="page-link" href="#">5</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="page_num_inf" style="float: right; margin-right: 50px">
+                    <i></i> 共
+                    <span id="totalPage">&nbsp;</span>10&nbsp;页<span id="totalCount">&nbsp;</span>80&nbsp;条
+                </div>
+
+
+            </div>
+        </div>
+
+        <!--<div style="height:200px"></div>-->
+        <!--引入尾部-->
+        <footer id="footer" th:replace="index::footer"></footer>
+    </div>
+
+
+
+    </body>
+</html>
