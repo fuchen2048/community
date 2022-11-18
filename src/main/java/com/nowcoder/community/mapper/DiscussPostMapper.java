@@ -74,5 +74,14 @@ public interface DiscussPostMapper {
 	 * @return
 	 */
 	Integer updateScore(@Param("id") Integer id, @Param("score") Double score);
+
+	/**
+	 * 根据用户id查询帖子
+	 * @param id 用户id
+	 * @param offset 每页起始行号
+	 * @param limit 每页显示条数
+	 * @return
+	 */
+	List<DiscussPost> selectDiscussPostByUserId(@Param("id") Integer id, @Param("offset") Integer offset, @Param("limit") Integer limit);
 	
 }

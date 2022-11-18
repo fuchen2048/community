@@ -4,6 +4,18 @@ $(function (){
     $("#deleteBtn").click(setDelete)
 });
 
+function reply(postId) {
+    if (!postId) {
+        alert("您还没有登录！");
+    }
+
+    $.post(
+        CONTEXT_PATH + "/comment/add/" + postId,
+    {
+
+    })
+}
+
 function like(btn,entityType,entityId,entityUserId,postId) {
     $.post(
         CONTEXT_PATH + "/like",

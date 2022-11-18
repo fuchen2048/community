@@ -76,4 +76,13 @@ public interface DiscussPostService {
 	 * @return
 	 */
 	Integer updateScore(Integer id, Double score);
+
+	/**
+	 * 通过用户id进行发帖查询
+	 * @param userId 用户id
+	 * @param offset 每页起始行号
+	 * @param limit 每页显示条数
+	 * @return
+	 */
+	List<DiscussPost> findDiscussPostByUserId (Integer userId, Integer offset, Integer limit);
 }

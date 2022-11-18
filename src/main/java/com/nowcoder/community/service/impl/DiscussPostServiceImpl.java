@@ -147,4 +147,10 @@ public class DiscussPostServiceImpl implements DiscussPostService {
 	public Integer updateScore(Integer id, Double score) {
 		return discussPostMapper.updateScore(id, score);
 	}
+
+	@Override
+	public List<DiscussPost> findDiscussPostByUserId(Integer userId, Integer offset, Integer limit) {
+		List<DiscussPost> discussPosts = discussPostMapper.selectDiscussPostByUserId(userId, offset, limit);
+		return discussPosts;
+	}
 }

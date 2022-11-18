@@ -2,9 +2,10 @@ $(function(){
 	$(".follow-btn").click(follow);
 });
 
+
 function follow() {
 	var btn = this;
-	if($(btn).hasClass("btn-info")) {
+	if($(btn).hasClass("btn-primary")) {
 		// 关注TA
 		$.post(
 			CONTEXT_PATH + "/follow",

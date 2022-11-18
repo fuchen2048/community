@@ -33,6 +33,15 @@
 			and user_id = #{userId}
 		</if>
 	</select>
+
+	<!--List<DiscussPost> selectDiscussPostByUserId(@Param("id") Integer id, @Param("offset") Integer offset, @Param("limit") Integer limit);-->
+	<select id="selectDiscussPostByUserId" resultType="DiscussPost">
+		select <include refid="selectFields"></include>
+		from discuss_post
+		where user_id = #{id}
+		order by create_time desc
+		limit #{offset}, #{limit}
+	</select>
 	
 	<!--Integer insertDiscussPost(DiscussPost discussPost);-->
 	<insert id="insertDiscussPost" parameterType="DiscussPost" keyProperty="id">

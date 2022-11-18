@@ -50,6 +50,7 @@ public class CommentController implements CommunityConstant {
 	 */
 	@PostMapping("/add/{discussPostId}")
 	public String addComment(@PathVariable("discussPostId")int discussPostId, Comment comment){
+
 		if (comment == null) {
 			throw new IllegalArgumentException("帖子为空");
 		}

@@ -1,7 +1,10 @@
 package com.nowcoder.community.controller;
 
 import com.nowcoder.community.annotation.LoginRequired;
+import com.nowcoder.community.entity.DiscussPost;
+import com.nowcoder.community.entity.Page;
 import com.nowcoder.community.entity.User;
+import com.nowcoder.community.service.DiscussPostService;
 import com.nowcoder.community.service.FollowService;
 import com.nowcoder.community.service.LikeService;
 import com.nowcoder.community.service.UserService;
@@ -21,6 +24,10 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author 伏辰
@@ -49,6 +56,9 @@ public class UserController implements CommunityConstant {
 	
 	@Autowired
 	private FollowService followService;
+
+	@Autowired
+	private DiscussPostService discussPostService;
 	
 	@Autowired
 	private HostHolder hostHolder;
@@ -64,6 +74,7 @@ public class UserController implements CommunityConstant {
 	
 	@Value("${qiniu.bucket.header.url}")
 	private String headerBucketUrl;
+
 	
 	/**
 	 * 去setting页面
@@ -215,7 +226,22 @@ public class UserController implements CommunityConstant {
 	 * @return
 	 */
 	@GetMapping("/my-post")
-	public String getMyPost(){
+	public String getMyPost(Model model, Page page){
+		List<DiscussPost> list = discussPostService.findDiscussPostByUserId(hostHolder.getUser().getId(), page.getOffset(), page.getLimit());
+
+		List<Map<String, Object>> myDiscussPosts = new ArrayList<>();
+		if (list != null && list.size()>0) {
+			for (DiscussPost post : list) {
+				Map<String, Object> map = new HashMap<>();
+				map.put("post", post);
+
+				long likeCount = likeService.findEntityLikeCount(ENTITY_TYPE_POST, post.getId());
+				map.put("likeCount", likeCount);
+				myDiscussPosts.add(map);
+			}
+		}
+		model.addAttribute("myDiscussPosts", myDiscussPosts);
+		model.addAttribute("myDiscussPostCount", list.size());
 		return "/site/my-post";
 	}
 
