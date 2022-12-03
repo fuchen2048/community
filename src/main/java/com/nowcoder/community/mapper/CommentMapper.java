@@ -13,6 +13,22 @@ import java.util.List;
  */
 @Mapper
 public interface CommentMapper {
+
+	/**
+	 * 根据用户id查询评论集合
+	 * @param userId 用户id
+	 * @return
+	 */
+	List<Comment> selectCommentByUserId(@Param("userId") Integer userId, @Param("offset") Integer offset,
+										@Param("limit") Integer limit);
+
+	/**
+	 * 查询用户的评论数量
+	 * @param userId
+	 * @return
+	 */
+	Integer selectCommentByUserIdCount(@Param("userId") Integer userId);
+
 	/**
 	 * 查询评论的集合
 	 * @param entityType 评论的类型

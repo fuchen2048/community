@@ -147,8 +147,8 @@
                         let route = pb.list[i];
                         let li = '<li>\n' +
             '                        <span class="num threeword">' + (i+1) + '</span>\n' +
-            '                        <a href="route_detail.html?rid=' + route.rid + '"><img src="' + route.rimage + '" alt=""></a>\n' +
-            '                        <h4><a href="route_detail.html?rid=' + route.rid + '">' + route.rname + '</a></h4>\n' +
+            '                        <a href=' + route.rid + '"scenic_detail.html?rid="><img src="' + route.rimage + '" alt=""></a>\n' +
+            '                        <h4><a href=' + route.rid + '"scenic_detail.html?rid=">' + route.rname + '</a></h4>\n' +
             '                        <p>\n' +
             '                            <b class="price">&yen;<span>' + route.price + '</span>起</b>\n' +
             '                            <span class="shouchang">已收藏' + route.count + '次</span>\n' +
@@ -169,7 +169,7 @@
                         for (let i = 0; i < route.length; i++) {
                             let popularroute = route[i];
                             let div='   <div class="col-md-3" >\n' +
-                                '                            <a href="route_detail.html?rid='+popularroute.rid+'">\n' +
+                                '                            <a href='+popularroute.rid+'"scenic_detail.html?rid=">\n' +
                                 '                                <img src="'+popularroute.rimage+'" alt="">\n' +
                                 '                                <div class="has_border">\n' +
                                 '                                    <h3>'+popularroute.rname+'</h3>\n' +
@@ -188,7 +188,7 @@
                 for (let i = 0; i < route.length; i++) {
                     let popularroute = route[i];
                     let div='   <div class="col-md-3" >\n' +
-                        '                            <a href="route_detail.html?rid='+popularroute.rid+'">\n' +
+                        '                            <a href='+popularroute.rid+'"scenic_detail.html?rid=">\n' +
                         '                                <img src="'+popularroute.rimage+'" alt="">\n' +
                         '                                <div class="has_border">\n' +
                         '                                    <h3>'+popularroute.rname+'</h3>\n' +
@@ -208,7 +208,7 @@
                     for (let listElement of list) {
                         let themeroute = listElement;
                         let div='   <div class="col-md-3" >\n' +
-                            '                            <a href="route_detail.html?rid='+themeroute.rid+'">\n' +
+                            '                            <a href='+themeroute.rid+'"scenic_detail.html?rid=">\n' +
                             '                                <img src="'+themeroute.rimage+'" alt="">\n' +
                             '                                <div class="has_border">\n' +
                             '                                    <h3>'+themeroute.rname+'</h3>\n' +
@@ -245,7 +245,7 @@
                     let lis = '<li class="nav-active"><a href="index.html">首页</a></li>';
                     //遍历数组,拼接字符串(<li>)
                     for (let i = 0; i < data.length; i++) {
-                        let li = '<li><a href="route_list.html?cid='+data[i].cid+'">'+data[i].cname+'</a></li>';
+                        let li = '<li><a href='+data[i].cid+'"scenic_list.html?cid=">'+data[i].cname+'</a></li>';
                         lis += li;
 
                     }
@@ -327,15 +327,15 @@
     <div class="navitem">
         <ul id="category"class="nav" style="padding-left: 200px;">
             <li class="nav-active"><a href="index.html">首页</a></li>
-            <li><a href="route_list.html">门票</a></li>
-            <!--<li><a href="route_list.html">酒店</a></li>-->
-            <!--<li><a href="route_list.html">香港车票</a></li>-->
-            <li><a href="route_list.html">出境游</a></li>
-            <li><a href="route_list.html">国内游</a></li>
-            <!--<li><a href="route_list.html">港澳游</a></li>-->
-            <li><a href="route_list.html">拼团游</a></li>
-            <li><a href="route_list.html">全部路线</a></li>
-            <!--<li><a href="route_list.html">全球自由行</a></li>-->
+            <li><a href="scenic_list.html">门票</a></li>
+            <!--<li><a href="scenic_list.html">酒店</a></li>-->
+            <!--<li><a href="scenic_list.html">香港车票</a></li>-->
+            <li><a href="scenic_list.html">出境游</a></li>
+            <li><a href="scenic_list.html">国内游</a></li>
+            <!--<li><a href="scenic_list.html">港澳游</a></li>-->
+            <li><a href="scenic_list.html">拼团游</a></li>
+            <li><a href="scenic_list.html">全部路线</a></li>
+            <!--<li><a href="scenic_list.html">全球自由行</a></li>-->
             <li><a href="favoriterank.html">收藏排行榜</a></li>
             <li><a href="favoriterank.html">个人信息</a></li>
         </ul>
@@ -354,8 +354,8 @@
                 <ul id="route" >
                     <li >
                         <span class="num one">1</span>
-                        <a href="route_detail.html"><img src="images/jiangxuan_4.jpg" alt=""></a>
-                        <h4><a href="route_detail.html">【尾单特卖】全国-曼谷6-7天自由行 泰国出境旅游 特价往6-7天自由行 泰国出境旅游 特价往..</a></h4>
+                        <a href="scenic_detail.html"><img src="images/jiangxuan_4.jpg" alt=""></a>
+                        <h4><a href="scenic_detail.html">【尾单特卖】全国-曼谷6-7天自由行 泰国出境旅游 特价往6-7天自由行 泰国出境旅游 特价往..</a></h4>
                         <p>
                             <b class="price">&yen;<span>899</span>起</b>
                             <span class="shouchang">已收藏450次</span>
@@ -363,8 +363,8 @@
                     </li>
                     <li>
                         <span class="num two">2</span>
-                         <a href="route_detail.html"><img src="images/jiangxuan_4.jpg" alt=""></a>
-                        <h4><a href="route_detail.html">【尾单特卖】全国-曼谷6-7天自由行 泰国出境旅游 特价往6-7天自由行 泰国出境旅游 特价往..</a></h4>
+                         <a href="scenic_detail.html"><img src="images/jiangxuan_4.jpg" alt=""></a>
+                        <h4><a href="scenic_detail.html">【尾单特卖】全国-曼谷6-7天自由行 泰国出境旅游 特价往6-7天自由行 泰国出境旅游 特价往..</a></h4>
                         <p>
                             <b class="price">&yen;<span>899</span>起</b>
                             <span class="shouchang">已收藏450次</span>
@@ -372,8 +372,8 @@
                     </li>
                     <li>
                         <span class="num">3</span>
-                         <a href="route_detail.html"><img src="images/jiangxuan_4.jpg" alt=""></a>
-                        <h4><a href="route_detail.html">【尾单特卖】全国-曼谷6-7天自由行 泰国出境旅游 特价往6-7天自由行 泰国出境旅游 特价往..</a></h4>
+                         <a href="scenic_detail.html"><img src="images/jiangxuan_4.jpg" alt=""></a>
+                        <h4><a href="scenic_detail.html">【尾单特卖】全国-曼谷6-7天自由行 泰国出境旅游 特价往6-7天自由行 泰国出境旅游 特价往..</a></h4>
                         <p>
                             <b class="price">&yen;<span>899</span>起</b>
                             <span class="shouchang">已收藏450次</span>
@@ -381,8 +381,8 @@
                     </li>
                     <li>
                         <span class="num">4</span>
-                         <a href="route_detail.html"><img src="images/jiangxuan_4.jpg" alt=""></a>
-                        <h4><a href="route_detail.html">【尾单特卖】全国-曼谷6-7天自由行 泰国出境旅游 特价往6-7天自由行 泰国出境旅游 特价往..</a></h4>
+                         <a href="scenic_detail.html"><img src="images/jiangxuan_4.jpg" alt=""></a>
+                        <h4><a href="scenic_detail.html">【尾单特卖】全国-曼谷6-7天自由行 泰国出境旅游 特价往6-7天自由行 泰国出境旅游 特价往..</a></h4>
                         <p>
                             <b class="price">&yen;<span>899</span>起</b>
                             <span class="shouchang">已收藏450次</span>
@@ -390,8 +390,8 @@
                     </li>
                     <li>
                         <span class="num">5</span>
-                         <a href="route_detail.html"><img src="images/jiangxuan_4.jpg" alt=""></a>
-                        <h4><a href="route_detail.html">【尾单特卖】全国-曼谷6-7天自由行 泰国出境旅游 特价往6-7天自由行 泰国出境旅游 特价往..</a></h4>
+                         <a href="scenic_detail.html"><img src="images/jiangxuan_4.jpg" alt=""></a>
+                        <h4><a href="scenic_detail.html">【尾单特卖】全国-曼谷6-7天自由行 泰国出境旅游 特价往6-7天自由行 泰国出境旅游 特价往..</a></h4>
                         <p>
                             <b class="price">&yen;<span>899</span>起</b>
                             <span class="shouchang">已收藏450次</span>
@@ -399,8 +399,8 @@
                     </li>
                     <li>
                         <span class="num">6</span>
-                         <a href="route_detail.html"><img src="images/jiangxuan_4.jpg" alt=""></a>
-                        <h4><a href="route_detail.html">【尾单特卖】全国-曼谷6-7天自由行 泰国出境旅游 特价往6-7天自由行 泰国出境旅游 特价往..</a></h4>
+                         <a href="scenic_detail.html"><img src="images/jiangxuan_4.jpg" alt=""></a>
+                        <h4><a href="scenic_detail.html">【尾单特卖】全国-曼谷6-7天自由行 泰国出境旅游 特价往6-7天自由行 泰国出境旅游 特价往..</a></h4>
                         <p>
                             <b class="price">&yen;<span>899</span>起</b>
                             <span class="shouchang">已收藏450次</span>
@@ -408,8 +408,8 @@
                     </li>
                     <li>
                         <span class="num">7</span>
-                         <a href="route_detail.html"><img src="images/jiangxuan_4.jpg" alt=""></a>
-                        <h4><a href="route_detail.html">【尾单特卖】全国-曼谷6-7天自由行 泰国出境旅游 特价往6-7天自由行 泰国出境旅游 特价往..</a></h4>
+                         <a href="scenic_detail.html"><img src="images/jiangxuan_4.jpg" alt=""></a>
+                        <h4><a href="scenic_detail.html">【尾单特卖】全国-曼谷6-7天自由行 泰国出境旅游 特价往6-7天自由行 泰国出境旅游 特价往..</a></h4>
                         <p>
                             <b class="price">&yen;<span>899</span>起</b>
                             <span class="shouchang">已收藏450次</span>
@@ -417,8 +417,8 @@
                     </li>
                     <li>
                         <span class="num">8</span>
-                        <a href="route_detail.html"><img src="images/jiangxuan_4.jpg" alt=""></a>
-                        <h4><a href="route_detail.html">【尾单特卖】全国-曼谷6-7天自由行 泰国出境旅游 特价往6-7天自由行 泰国出境旅游 特价往..</a></h4>
+                        <a href="scenic_detail.html"><img src="images/jiangxuan_4.jpg" alt=""></a>
+                        <h4><a href="scenic_detail.html">【尾单特卖】全国-曼谷6-7天自由行 泰国出境旅游 特价往6-7天自由行 泰国出境旅游 特价往..</a></h4>
                         <p>
                             <b class="price">&yen;<span>899</span>起</b>
                             <span class="shouchang">已收藏450次</span>

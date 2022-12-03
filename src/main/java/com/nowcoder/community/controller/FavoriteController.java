@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class FavoriteController {
 
-    @GetMapping("/site/favorite")
+    @GetMapping("/favorite")
     public String getFavorite(){
         return "/site/myfavorite";
     }

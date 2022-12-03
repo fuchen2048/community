@@ -44,17 +44,17 @@
 
 							<!--景点-->
 							<li class="nav-item ml-3 btn-group-vertical">
-								<a class="nav-link" th:href="@{/site/route_list}">景区信息</a>
+								<a class="nav-link" th:href="@{/scenic_list}">景区信息</a>
 							</li>
 
 							<!--拼团-->
 							<li class="nav-item ml-3 btn-group-vertical">
-								<a class="nav-link" th:href="@{/site/group}">拼团旅游</a>
+								<a class="nav-link" th:href="@{/group}">拼团旅游</a>
 							</li>
 
 							<!--收藏-->
 							<li class="nav-item ml-3 btn-group-vertical" th:if="${loginUser!=null}">
-								<a class="nav-link position-relative" th:href="@{/site/favorite}">我的收藏</span></a>
+								<a class="nav-link position-relative" th:href="@{/favorite}">我的收藏</span></a>
 							</li>
 
 							<!--信息-->

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="utf-8">
+    <title>路线详情</title>
+    <!--<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">-->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/route-detail.css}">
+    <link rel="stylesheet" th:href="@{/css/search.css}">
+    <link rel="icon" th:href="@{/img/logo_1.ico}"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" crossorigin="anonymous" />
+
+    <link rel="stylesheet" th:href="@{/css/global.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/index.css}">
+</head>
+
+
+<body>
+<!--引入头部-->
+<div class="nk-container">
+    <!-- 头部 -->
+    <header class="bg-blue sticky-top" style="box-shadow: 0px 0px 8px #2388e7" th:replace="index::header">
+    </header>
+
+    <!--内容-->
+    <div class="page_one">
+        <div class="contant">
+            <div class="crumbs">
+                <img th:src="@{/images/search.png}" alt="">
+                <p>景点 ><span th:text="${scenic.scenicName}">故宫</span></p>
+            </div>
+
+            <div  style="border-bottom: 2px solid #2388e7; width: 1188px; margin-bottom: 20px; margin-top: 7px" ></div>
+
+
+            <!-- 详情 start -->
+            <div class="wrap">
+
+                <!--分割线-->
+                <div class="bread_box">
+
+                </div>
+
+                <!--图片与价格信息-->
+                <div class="prosum_box">
+                    <dl class="prosum_left">
+                        <dt id="bigImg">
+                            <img alt="" class="big_img"
+                                 th:src="${scenic.imageUrl}">
+                            <!-- <img alt="" class="big_img" src="http://www.jinmalvyou.com/Public/uploads/goods_img/img_size4/201703/m49788843d72171643297ccc033d9288ee.jpg"> -->
+                        </dt>
+
+                        <dd id="dd">
+                            <a class="up_img up_img_disable" ></a>
+
+                            <a  title="" class="little_img" data-bigpic="http://www.jinmalvyou.com/Public/uploads/goods_img/img_size4/201703/m40920d0669855e745d97f9ad1df966ebb.jpg">
+                                <!--<img th:src="${scenicImages.image}">-->
+                                <img th:src="${scenic.imageUrl}">
+                            </a>
+                            <a  title="" class="little_img" data-bigpic="http://www.jinmalvyou.com/Public/uploads/goods_img/img_size4/201703/m40920d0669855e745d97f9ad1df966ebb.jpg">
+                                <img src="http://www.jinmalvyou.com/Public/uploads/goods_img/img_size2/201703/m20920d0669855e745d97f9ad1df966ebb.jpg">
+                            </a>
+                            <a class="down_img down_img_disable" style="margin-bottom: 0;"></a>
+                        </dd>
+                    </dl>
+                    <div class="prosum_right" >
+                        <p class="pros_title"><span id="rname" th:text="${scenic.introduce}">故宫又名紫禁城，是中国乃至世界上保存最完整，规模最大的木质结构古建筑群，被誉为“世界五大宫之首”。</span></p>
+                        <p class="hot"><span id="routeIntroduce" th:text="${scenic.content}">故宫需要从南到北参观，午门是唯一的入口，出口是东华门和神武门。</span></p>
+                        <div class="pros_other">
+                            <p>经营商家  ：<span id="sname" th:text="${scenic.merchant}">故宫博物院</span></p>
+                            <p>咨询电话 : <span id="consphone" th:text="${scenic.phone}"> 400-618-9090</span></p>
+                            <p>地址  ：<span id="address" th:text="${scenic.address}">北京朝阳区</span></p>
+                        </div>
+                        <div class="pros_price">
+                            <p class="price"><strong>¥ <span id="price" th:text="${scenic.price}">60</span></strong><div id="errorMsg" style="color: red;"></div></p>
+                            <p class="collect">
+                                <!--<a class="btn" id="favorite" onclick="addFavorite();"><i class="glyphicon glyphicon-heart-empty"></i>点击收藏</a>-->
+
+                                <!--<a  class="btn" id="removefavorite" onclick="removeFavorite();"><i class="glyphicon glyphicon-heart-empty"></i>取消收藏</a>-->
+
+                                <button type="button" class="btn btn-lg btn-outline-danger">
+
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                                    </svg>点击收藏</button>
+                                <button type="button" class="btn btn-outline-danger btn-lg" disabled>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+                                        <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+                                    </svg>取消收藏</button>
+                                <span id="favoriteCount">已收藏100次</span>
+
+
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!--旅游须知-->
+
+                <div class="you_need_konw">
+                    <div class="jx_top" >
+                        <ul class="jx_tabs" role="tablist">
+                            <li role="presentation" class="active">
+                                <a href="#popularity" aria-controls="popularity" role="tab" data-toggle="tab">旅游须知</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="notice" style="border: 2px solid #2388e7">
+                        <p th:text="${scenic.notice}" style="white-space: pre-wrap">➤北京故宫大门门票</p>
+                    </div>
+                </div>
+            </div>
+            <!-- 详情 end -->
+
+        </div>
+    </div>
+
+
+
+    <div style="height:200px"></div>
+    <!--尾部-->
+    <div id="footer" th:replace="index::footer"></div>
+</div>
+
+<script th:src="@{/js/jquery-3.3.1.js}"></script>
+
+<script>
+    $(document).ready(function() {
+        goImg();
+    });
+    function goImg(){
+        //焦点图效果
+        //点击图片切换图片
+        $('.little_img').on('mousemove', function() {
+            $('.little_img').removeClass('cur_img');
+            var big_pic = $(this).data('bigpic');
+            $('.big_img').attr('src', big_pic);
+            $(this).addClass('cur_img');
+        });
+        //上下切换
+        var picindex = 0;
+        var nextindex = 4;
+        $('.down_img').on('click',function(){
+            var num = $('.little_img').length;
+            if((nextindex + 1) <= num){
+                $('.little_img:eq('+picindex+')').hide();
+                $('.little_img:eq('+nextindex+')').show();
+                picindex = picindex + 1;
+                nextindex = nextindex + 1;
+            }
+        });
+        $('.up_img').on('click',function(){
+            var num = $('.little_img').length;
+            if(picindex > 0){
+                $('.little_img:eq('+(nextindex-1)+')').hide();
+                $('.little_img:eq('+(picindex-1)+')').show();
+                picindex = picindex - 1;
+                nextindex = nextindex - 1;
+            }
+        });
+        //自动播放
+        // var timer = setInterval("auto_play()", 5000);
+    }
+
+    //自动轮播方法
+    function auto_play() {
+        var cur_index = $('.prosum_left dd').find('a.cur_img').index();
+        cur_index = cur_index - 1;
+        var num = $('.little_img').length;
+        var max_index = 3;
+        if ((num - 1) < 3) {
+            max_index = num - 1;
+        }
+        if (cur_index < max_index) {
+            var next_index = cur_index + 1;
+            var big_pic = $('.little_img:eq(' + next_index + ')').data('bigpic');
+            $('.little_img').removeClass('cur_img');
+            $('.little_img:eq(' + next_index + ')').addClass('cur_img');
+            $('.big_img').attr('src', big_pic);
+        } else {
+            var big_pic = $('.little_img:eq(0)').data('bigpic');
+            $('.little_img').removeClass('cur_img');
+            $('.little_img:eq(0)').addClass('cur_img');
+            $('.big_img').attr('src', big_pic);
+        }
+    }
+</script>
+<script>
+    /**
+     * 图片详情页面的展示
+     */
+    $(function () {
+        let rid = getParameter("rid");
+        $.post("RouteServlet/findOne", {rid: rid}, function (route) {
+            $("#rname").html(route.rname);
+            $("#routeIntroduce").html(route.routeIntroduce);
+            $("#price").html(route.price);
+            $("#sname").html(route.seller.sname);
+            $("#consphone").html(route.seller.consphone);
+            $("#address").html(route.seller.address);
+            //设置大图为第一个小图
+            let bigPic = '<img alt="" class="big_img" src="'+route.routeImgList[0].smallPic+'">';
+            $("#bigImg").html(bigPic);
+            /*let ddstr = '<dt>\n' +
+                '                    <img alt="" class="big_img" src="' + route.routeImgList[0].bigPic + '">\n' +
+                '                </dt>\n' +
+                '                <dd id="dd">\n' +
+                '                    <a class="up_img up_img_disable"></a>';*/
+            let ddstr = '<a class="up_img up_img_disable"></a>';
+            //遍历routeImgList
+            for (let i = 0; i < route.routeImgList.length; i++) {
+
+                let astr;
+                if (i >= 4) {
+                    astr = '<a title="" class="little_img" data-bigpic="' + route.routeImgList[i].bigPic + '" style="display:none;">\n' +
+                        '                        <img src="' + route.routeImgList[i].smallPic + '">\n' +
+                        '                    </a>';
+                } else {
+                    astr = '<a title="" class="little_img" data-bigpic="' + route.routeImgList[i].bigPic + '">\n' +
+                        '                        <img src="' + route.routeImgList[i].smallPic + '">\n' +
+                        '                    </a>';
+                }
+                ddstr += astr;
+            }
+            ddstr += '<a class="down_img down_img_disable" style="margin-bottom: 0;"></a>';
+
+            $("#dd").html(ddstr);
+
+            //图片展示和切换代码调用
+            goImg();
+
+
+        })
+    });
+</script>
+
+</body>
+
+</html>

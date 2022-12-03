@@ -1,6 +1,7 @@
 package com.nowcoder.community.service;
 
 import com.nowcoder.community.entity.Comment;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -11,7 +12,21 @@ import java.util.List;
  */
 
 public interface CommentService {
-	
+
+	/**
+	 * 根据用户id查询评论集合
+	 * @param userId 用户id
+	 * @return
+	 */
+	List<Comment> findCommentByUserId(Integer userId, Integer offset, Integer limit);
+
+	/**
+	 * 查询用户的评论数量
+	 * @param userId 用户id
+	 * @return
+	 */
+	Integer findCommentByUserIdCount(Integer userId);
+
 	/**
 	 * 查询评论的集合
 	 * @param entityType 评论的类型

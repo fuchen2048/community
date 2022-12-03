@@ -41,7 +41,7 @@ public class HomeController implements CommunityConstant {
 	 * @param page 页面
 	 * @return
 	 */
-	@GetMapping("/site/group")
+	@GetMapping("/group")
 	public String getIndexPage(Model model, Page page ,@RequestParam(name = "orderMode", defaultValue = "0") int orderMode){
 		//SpringMVC会自动实例化Model和Page,并将Page注入Model
 		page.setRows(discussPostService.findDiscussPostRows(0));

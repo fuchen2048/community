@@ -1,13 +1,11 @@
 package com.nowcoder.community.controller;
 
 import com.nowcoder.community.annotation.LoginRequired;
+import com.nowcoder.community.entity.Comment;
 import com.nowcoder.community.entity.DiscussPost;
 import com.nowcoder.community.entity.Page;
 import com.nowcoder.community.entity.User;
-import com.nowcoder.community.service.DiscussPostService;
-import com.nowcoder.community.service.FollowService;
-import com.nowcoder.community.service.LikeService;
-import com.nowcoder.community.service.UserService;
+import com.nowcoder.community.service.*;
 import com.nowcoder.community.util.CommunityConstant;
 import com.nowcoder.community.util.CommunityUtil;
 import com.nowcoder.community.util.HostHolder;
@@ -59,6 +57,9 @@ public class UserController implements CommunityConstant {
 
 	@Autowired
 	private DiscussPostService discussPostService;
+
+	@Autowired
+	private CommentService commentService;
 	
 	@Autowired
 	private HostHolder hostHolder;
@@ -128,14 +129,14 @@ public class UserController implements CommunityConstant {
 	@PostMapping("/upload")
 	public String uploadHeader(MultipartFile headerImg, Model model){
 		if (headerImg == null) {
-		    model.addAttribute("error","老表，给我个图，中不中？");
+		    model.addAttribute("error","请上传图片！");
 			return "/site/setting";
 		}
 		
 		String filename = headerImg.getOriginalFilename();
 		String suffix = filename.substring(filename.lastIndexOf("."));
 		if (StringUtils.isBlank(suffix)) {
-			model.addAttribute("error","老表，你这图格式不正常啊！");
+			model.addAttribute("error","图片格式错误！");
 			return "/site/setting";
 		}
 		
@@ -223,11 +224,24 @@ public class UserController implements CommunityConstant {
 
 	/**
 	 * 我的帖子
+	 * @param model
+	 * @param page
 	 * @return
 	 */
 	@GetMapping("/my-post")
 	public String getMyPost(Model model, Page page){
-		List<DiscussPost> list = discussPostService.findDiscussPostByUserId(hostHolder.getUser().getId(), page.getOffset(), page.getLimit());
+		User user = hostHolder.getUser();
+
+		//查询拼团帖数量
+		int count = discussPostService.findDiscussPostRows(user.getId());
+
+		//分页信息
+		page.setLimit(10);
+		page.setPath("/user/my-post");
+		page.setRows(count);
+
+		//查询用户发帖
+		List<DiscussPost> list = discussPostService.findDiscussPostByUserId(user.getId(), page.getOffset(), page.getLimit());
 
 		List<Map<String, Object>> myDiscussPosts = new ArrayList<>();
 		if (list != null && list.size()>0) {
@@ -241,18 +255,46 @@ public class UserController implements CommunityConstant {
 			}
 		}
 		model.addAttribute("myDiscussPosts", myDiscussPosts);
-		model.addAttribute("myDiscussPostCount", list.size());
+		model.addAttribute("myDiscussPostCount", count);
 		return "/site/my-post";
 	}
 
 	/**
-	 *我的回复
+	 * 我的回复
+	 * @param model
+	 * @param page
+	 * @return
 	 */
 	@GetMapping("/my-reply")
-	public String getMyReply(){
+	public String getMyReply(Model model, Page page){
+		User user = hostHolder.getUser();
+
+		//查询用户评论数量
+		Integer count = commentService.findCommentByUserIdCount(user.getId());
+
+		//分页信息
+		page.setLimit(10);
+		page.setPath("/user/my-reply");
+		page.setRows(count);
+
+		//查询回复
+		List<Comment> commentList = commentService.findCommentByUserId(user.getId(), page.getOffset(), page.getLimit());
+
+		List<Map<String, Object>> myReplyList = new ArrayList<>();
+		if (commentList != null && commentList.size()>0) {
+			for (Comment comment : commentList) {
+				Map<String, Object> map = new HashMap<>();
+				DiscussPost post = discussPostService.findDiscussPost(comment.getEntityId());
+				map.put("post",post);
+				map.put("comment", comment);
+				myReplyList.add(map);
+			}
+		}
+
+		model.addAttribute("myReply", myReplyList);
+		model.addAttribute("myReplyCount", count);
+
 		return "/site/my-reply";
 	}
-
-
 
 }
