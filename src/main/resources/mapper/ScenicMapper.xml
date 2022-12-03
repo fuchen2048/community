@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nowcoder.community.mapper.ScenicMapper">
+
+    <!--List<Scenic> selectAllScenic();-->
+    <select id="selectAllScenic" resultType="Scenic">
+        select id, scenic_name, introduce, content, image_url, price
+        from scenic;
+    </select>
+
+    <!--Scenic selectScenicById(@Param("id") Integer id);-->
+    <select id="selectScenicById" resultType="Scenic">
+        select id, scenic_name, introduce, content, image_url, notice, price, merchant, phone, address
+        from scenic
+        where id = #{id};
+    </select>
+
+    <insert id="">
+      
+    </insert>
+</mapper>
