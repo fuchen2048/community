@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nowcoder.community.mapper.FavoriteMapper">
+
+    <!--Integer insertCollection(Collection collection);-->
+    <insert id="insertCollection">
+        insert into favorite (user_id, scenic_id, create_time)
+        values (#{userId}, #{scenicId}, #{createTime});
+    </insert>
+
+    <!--Collection selectByUserIdAndScenicId(@Param("userId") Integer userId, @Param("scenicId") Integer scenicId);-->
+    <select id="selectByUserIdAndScenicId" resultType="Favorite">
+        select id, user_id, scenic_id, create_time
+        from favorite
+        where user_id = #{userId} and scenic_id = #{scenicId};
+    </select>
+
+    <!--Integer deleteCollection(@Param("userId") Integer userId, @Param("scenicId") Integer scenicId);-->
+    <delete id="deleteCollection">
+        delete
+        from favorite
+        where user_id = #{userId} and scenic_id = #{scenicId}
+    </delete>
+
+    <!--Integer selectCollectionCount(Integer scenicId);-->
+    <select id="selectCollectionCount" resultType="Integer">
+        select count(*) from favorite where scenic_id = #{scenicId}
+    </select>
+
+    <!--List<Scenic> selectCollectionByCount();-->
+    <select id="selectCollectionByCount" resultType="Scenic">
+        SELECT scenic.id, scenic_name, introduce, content, image_url, notice, price, merchant, phone, address, scenic.create_time
+        FROM scenic,favorite
+        WHERE scenic.id = favorite.scenic_id
+        GROUP BY favorite.scenic_id
+        ORDER BY COUNT(favorite.scenic_id) DESC
+        LIMIT #{offset},#{limit};
+    </select>
+
+    <!--List<Scenic> selectCollectionAllByUserId(@Param("userId") Integer userId, Integer offset, Integer limit);-->
+    <select id="selectCollectionAllByUserId" resultType="Scenic">
+        SELECT scenic.id, scenic_name, introduce, content, image_url, notice, price, merchant, phone, address, favorite.create_time
+        FROM scenic, favorite
+        WHERE scenic.id = favorite.scenic_id
+        AND favorite.user_id = #{userId}
+        ORDER BY favorite.create_time DESC
+        LIMIT #{offset}, #{limit};
+    </select>
+
+    <!--Integer selectCollectionCountByUserId(@Param("userId") Integer userId);-->
+    <select id="selectCollectionCountByUserId" resultType="Integer">
+        SELECT COUNT(*)
+        FROM favorite
+        WHERE user_id = #{userId};
+    </select>
+
+
+    <select id="selectCollectionCountAll" resultType="Integer">
+        SELECT COUNT(DISTINCT scenic_id)
+        FROM favorite;
+    </select>
+</mapper>
