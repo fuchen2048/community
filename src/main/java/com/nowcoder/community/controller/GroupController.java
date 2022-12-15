@@ -24,7 +24,7 @@ import java.util.Map;
  * 首页-控制层
  */
 @Controller
-public class HomeController implements CommunityConstant {
+public class GroupController implements CommunityConstant {
 	
 	@Autowired
 	public UserService userService;
@@ -45,7 +45,7 @@ public class HomeController implements CommunityConstant {
 	public String getIndexPage(Model model, Page page ,@RequestParam(name = "orderMode", defaultValue = "0") int orderMode){
 		//SpringMVC会自动实例化Model和Page,并将Page注入Model
 		page.setRows(discussPostService.findDiscussPostRows(0));
-		page.setPath("/site/group?orderMode=" +  orderMode);
+		page.setPath("/group?orderMode=" +  orderMode);
 		
 		List<DiscussPost> list = discussPostService.findDiscussPosts(0, page.getOffset(), page.getLimit(), orderMode);
 		List<Map<String, Object>> discussPosts = new ArrayList<>();

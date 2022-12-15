@@ -27,4 +27,10 @@ public interface ScenicMapper {
      */
     Scenic selectScenicById(@Param("id") Integer id);
 
+    /**
+     * 查询所有景点的个数
+     * @return
+     */
+    Integer selectScenicCountAll();
+
 }

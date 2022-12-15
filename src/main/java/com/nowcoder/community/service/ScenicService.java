@@ -26,4 +26,10 @@ public interface ScenicService {
      * @return
      */
     Scenic findScenicById(Integer id);
+
+    /**
+     * 查询景点个数
+     * @return
+     */
+    Integer findScenicCountAll();
 }

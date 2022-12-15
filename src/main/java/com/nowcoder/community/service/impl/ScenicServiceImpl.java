@@ -28,4 +28,9 @@ public class ScenicServiceImpl implements ScenicService {
     public Scenic findScenicById(Integer id) {
         return scenicMapper.selectScenicById(id);
     }
+
+    @Override
+    public Integer findScenicCountAll() {
+        return scenicMapper.selectScenicCountAll();
+    }
 }

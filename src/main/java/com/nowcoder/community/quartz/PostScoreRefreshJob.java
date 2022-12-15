@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.BoundSetOperations;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.stereotype.Component;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -23,6 +24,7 @@ import java.util.Date;
  * @author 伏辰
  * @date 2022/7/25
  */
+@Component
 public class PostScoreRefreshJob implements Job, CommunityConstant {
 	
 	private static final Logger log = LoggerFactory.getLogger(PostScoreRefreshJob.class);
@@ -45,7 +47,7 @@ public class PostScoreRefreshJob implements Job, CommunityConstant {
 		try {
 			epoch = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse("2014-08-01 00:00:00");
 		} catch (ParseException e) {
-			throw new RuntimeException("初始化牛客纪年失败！");
+			throw new RuntimeException("初始化纪年失败！");
 		}
 	}
 	@Override
@@ -54,20 +56,20 @@ public class PostScoreRefreshJob implements Job, CommunityConstant {
 		BoundSetOperations operations = redisTemplate.boundSetOps(reidsKey);
 		
 		if (operations.size() == 0){
-			log.info("[任务取消] 没有需要刷新的帖子！");
+			log.info("[任务取消] 没有需要刷新的拼团信息！");
 			return;
 		}
-		log.info("[任务开始] 正在刷新帖子分数：" + operations.size());
+		log.info("[任务开始] 正在刷新拼团信息分数：" + operations.size());
 		while (operations.size() > 0) {
 			this.refresh((Integer) operations.pop());
 		}
-		log.info("[任务结束] 帖子分数刷新完毕！");
+		log.info("[任务结束] 拼团信息分数刷新完毕！");
 	}
 	
 	private void refresh(Integer postId){
 		DiscussPost post = discussPostService.findDiscussPost(postId);
 		if (post == null) {
-		    log.error("该帖子不存在：id = " + postId);
+		    log.error("该拼团信息不存在：id = " + postId);
 			return;
 		}
 		

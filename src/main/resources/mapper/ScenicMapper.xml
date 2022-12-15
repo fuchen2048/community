@@ -17,7 +17,9 @@
         where id = #{id};
     </select>
 
-    <insert id="">
-      
-    </insert>
+    <!--selectScenicCountAll-->
+    <select id="selectScenicCountAll" resultType="Integer">
+        select count(*)
+        from scenic
+    </select>
 </mapper>

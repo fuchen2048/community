@@ -58,6 +58,7 @@
                                         <span th:text="${scenics.scenic.price}">60</span>
                                     </p>
                                     <p><a th:href="@{|/scenic_detail/${scenics.scenic.id}|}">查看详情</a></p>
+
                                 </div>
                             </li>
                         </ul>
@@ -95,46 +96,28 @@
                             <div class="hot">HOT</div>
                             <span>热门推荐</span>
                         </div>
-                        <ul id="hotroute">
+                        <ul id="hotroute" th:each="scenicH:${scenicsHot}">
                             <li>
-                                <div class="left"><img th:src="@{/images/04-search_09.jpg}" alt=""></div>
+                                <div class="left">
+                                    <img th:src="${scenicH.scenic.imageUrl}" th:alt="${scenicH.scenic.scenicName}">
+                                </div>
+
                                 <div class="right">
-                                    <p>清远新银盏温泉度假村酒店/自由行套...</p>
-                                    <p>网付价<span>&yen;<span>899</span>起</span>
+
+                                    <p th:utext="${scenicH.scenic.introduce}" style="font-size: 9px">
+                                        清远新银盏温泉度假村酒店/自由行套...
+                                    </p>
+                                    <p style="font-size: 9px">
+                                        价格:
+                                        <span style="font-size: 9px">
+                                            &yen;
+                                            <span th:utext="${scenicH.scenic.price}" style="font-size: 9px">
+                                                899
+                                            </span>
+                                        </span>
                                     </p>
                                 </div>
-                            </li>
-                            <li>
-                                <div class="left"><img th:src="@{/images/04-search_09.jpg}" alt=""></div>
-                                <div class="right">
-                                    <p>清远新银盏温泉度假村酒店/自由行套...</p>
-                                    <p>网付价<span>&yen;<span>899</span>起</span>
-                                    </p>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="left"><img th:src="@{/images/04-search_09.jpg}" alt=""></div>
-                                <div class="right">
-                                    <p>清远新银盏温泉度假村酒店/自由行套...</p>
-                                    <p>网付价<span>&yen;<span>899</span>起</span>
-                                    </p>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="left"><img th:src="@{/images/04-search_09.jpg}" alt=""></div>
-                                <div class="right">
-                                    <p>清远新银盏温泉度假村酒店/自由行套...</p>
-                                    <p>网付价<span>&yen;<span>899</span>起</span>
-                                    </p>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="left"><img th:src="@{/images/04-search_09.jpg}" alt=""></div>
-                                <div class="right">
-                                    <p>清远新银盏温泉度假村酒店/自由行套...</p>
-                                    <p>网付价<span>&yen;<span>899</span>起</span>
-                                    </p>
-                                </div>
+
                             </li>
                         </ul>
                     </div>

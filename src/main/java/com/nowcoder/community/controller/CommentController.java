@@ -3,18 +3,22 @@ package com.nowcoder.community.controller;
 import com.nowcoder.community.entity.Comment;
 import com.nowcoder.community.entity.DiscussPost;
 import com.nowcoder.community.entity.Event;
+import com.nowcoder.community.entity.User;
 import com.nowcoder.community.event.EventProducer;
 import com.nowcoder.community.service.CommentService;
 import com.nowcoder.community.service.DiscussPostService;
 import com.nowcoder.community.util.CommunityConstant;
+import com.nowcoder.community.util.CommunityUtil;
 import com.nowcoder.community.util.HostHolder;
 import com.nowcoder.community.util.RedisKeyUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.Date;
 
@@ -23,6 +27,7 @@ import java.util.Date;
  * @date 2022/7/13
  * 评论-控制层
  */
+@Slf4j
 @Controller
 @RequestMapping("/comment")
 public class CommentController implements CommunityConstant {
@@ -49,15 +54,25 @@ public class CommentController implements CommunityConstant {
 	 * @return
 	 */
 	@PostMapping("/add/{discussPostId}")
-	public String addComment(@PathVariable("discussPostId")int discussPostId, Comment comment){
+	public String addComment(@PathVariable("discussPostId")int discussPostId, Comment comment, DiscussPost discussPost){
 
 		if (comment == null) {
 			throw new IllegalArgumentException("帖子为空");
 		}
-		comment.setUserId(hostHolder.getUser().getId());
+
+		if (discussPost == null) {
+			throw new IllegalArgumentException("无帖子回复数量");
+		}
+		User user = hostHolder.getUser();
+
+		comment.setUserId(user.getId());
 		comment.setStatus(0);
 		comment.setCreateTime(new Date());
 		commentService.addComment(comment);
+
+		discussPostService.updateCommentCount(discussPostId, discussPost.getCommentCount() + 1);
+
+		log.info(discussPost.toString());
 		
 		//触发评论事件
 		Event event = new Event()

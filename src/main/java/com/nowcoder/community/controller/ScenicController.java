@@ -1,8 +1,10 @@
 package com.nowcoder.community.controller;
 
 import com.nowcoder.community.entity.*;
+import com.nowcoder.community.service.FavoriteService;
 import com.nowcoder.community.service.ScenicImageService;
 import com.nowcoder.community.service.ScenicService;
+import com.nowcoder.community.util.CommunityUtil;
 import com.nowcoder.community.util.HostHolder;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +40,9 @@ public class ScenicController {
     @Autowired
     private ScenicImageService scenicImageService;
 
+    @Autowired
+    private FavoriteService favoriteService;
+
     @Value("${scenic.path.image}")
     private String scenicImage;
 
@@ -68,7 +73,22 @@ public class ScenicController {
         model.addAttribute("scenicImg", imageList);
         model.addAttribute("scenic", scenic);
 
-        return "/site/scenic_detail";
+        User user = hostHolder.getUser();
+
+        if (user != null) {
+            //查询用户收藏信息
+            Favorite collection = favoriteService.findByUserIdAndScenicId(user.getId(), scenic.getId());
+            model.addAttribute("collection", collection);
+
+            //查询景点收藏次数
+            Integer collectionCount = favoriteService.getCollectionCount(scenicId);
+            model.addAttribute("collectionCount", collectionCount);
+            return "/site/scenic_detail";
+        } else {
+
+            model.addAttribute("collectionCount",  favoriteService.getCollectionCount(scenicId));
+            return "/site/scenic_detail";
+        }
     }
 
     /**
@@ -97,6 +117,20 @@ public class ScenicController {
 
         model.addAttribute("scenicList", scenicList);
         model.addAttribute("scenicCount", scenicList.size());
+
+
+        List<Scenic> scenicConllectionList = favoriteService.findCollectionByCount(page.getOffset(), page.getLimit());
+        List<Map<String, Object>> scenicListByCount = new ArrayList<>();
+
+        if (scenicConllectionList != null && scenicConllectionList.size() > 0) {
+            for (Scenic scenic : scenicConllectionList) {
+                Map<String, Object> map = new HashMap<>();
+                map.put("scenic", scenic);
+                scenicListByCount.add(map);
+            }
+        }
+
+        model.addAttribute("scenicsHot", scenicListByCount);
         return "/site/scenic_list";
     }
 

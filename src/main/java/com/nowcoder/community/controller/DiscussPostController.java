@@ -162,7 +162,10 @@ public class DiscussPostController implements CommunityConstant {
 		}
 		
 		model.addAttribute("comments", commentVoList);
-		
+
+		User userH = hostHolder.getUser();
+		model.addAttribute("loginUserH",userH);
+
 		return "/site/discuss-detail";
 	}
 	

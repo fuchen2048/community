@@ -10,7 +10,6 @@
 
   <link rel="icon" th:href="@{/img/logo_1.ico}"/>
   <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
-  <!--<link rel="stylesheet" th:href="@{/css/bootstrap-theme.min.css}"/>-->
   <link rel="stylesheet" th:href="@{/css/global.css}" />
   <title>拼团旅游信息网-拼团</title>
 </head>
@@ -77,10 +76,10 @@
         <!-- 筛选条件 -->
         <ul class="nav nav-tabs mb-3">
           <li class="nav-item">
-            <a th:class="|nav-link ${orderMode==0?'active':''}|" th:href="@{/site/group(orderMode=0)}">最新</a>
+            <a th:class="|nav-link ${orderMode==0?'active':''}|" th:href="@{/group(orderMode=0)}">最新</a>
           </li>
           <li class="nav-item">
-            <a th:class="|nav-link ${orderMode==1?'active':''}|" th:href="@{/site/group(orderMode=1)}">最热</a>
+            <a th:class="|nav-link ${orderMode==1?'active':''}|" th:href="@{/group(orderMode=1)}">最热</a>
           </li>
         </ul>
         <button type="button" class="btn btn-primary btn-sm position-absolute rt-0"

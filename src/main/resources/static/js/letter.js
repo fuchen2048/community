@@ -33,3 +33,7 @@ function delete_msg() {
 	// TODO 删除数据
 	$(this).parents(".media").remove();
 }
+
+function back(){
+	location.href = CONTEXT_PATH + "/letter/list";
+}
