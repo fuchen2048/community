@@ -5,18 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>拼团旅游信息网-景点</title>
+    <!--引入logo，css-->
     <link rel="stylesheet" th:href="@{/css/search.css}">
     <link rel="icon" th:href="@{/img/logo_1.ico}"/>
-    <script th:src="@{/js/jquery-3.3.1.js}"></script>
-
-
-    <!--引入导航css-->
     <link rel="icon" th:href="@{/img/logo_1.ico}"/>
     <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
     <link rel="stylesheet" th:href="@{/css/global.css}" />
 
-</script>
+    <title>拼团旅游信息网-景区列表</title>
 
 </head>
 <body>
@@ -27,29 +23,30 @@
         <header class="bg-blue sticky-top" style="box-shadow: 0px 0px 8px #2388e7" th:replace="index::header">
         </header>
 
-
         <!--内容-->
         <div class="page_one">
             <div class="contant">
                 <div class="crumbs">
-                    <img th:src="@{/images/search.png}" alt="">
+                    <img th:src="@{/img/search.svg}" alt="景点搜索">
                     <p>景点</p>
                 </div>
 
                 <div class="jx_top" style="border-bottom: 2px solid #2388e7; margin-top: 7px"></div>
 
+                <!-- 景点信息 -->
                 <div class="xinxi clearfix">
                     <div class="left">
                         <div class="header">
                             <span>景点信息</span>
                             <span class="jg">门票</span>
                         </div>
+                        <!--景点信息列表-->
                         <ul th:each="scenics:${scenicList}">
                             <li style="background-color: white" >
                                 <div class="img" ><img th:src="${scenics.scenic.imageUrl}" th:alt="${scenics.scenic.scenicName}" ></div>
                                 <div class="text1">
                                     <p th:text="${scenics.scenic.introduce}">故宫又名紫禁城，是中国乃至世界上保存最完整，规模最大的木质结构古建筑群，被誉为“世界五大宫之首”。</p>
-                                    <!-- <br/> -->
+
                                     <p th:text="${scenics.scenic.content}">故宫需要从南到北参观，午门是唯一的入口，出口是东华门和神武门。</p>
                                 </div>
                                 <div class="price">
@@ -90,7 +87,7 @@
 
                     </div>
 
-
+                    <!-- 热门景点推荐 -->
                     <div class="right">
                         <div class="top">
                             <div class="hot">HOT</div>

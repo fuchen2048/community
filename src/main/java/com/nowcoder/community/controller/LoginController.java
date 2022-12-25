@@ -169,7 +169,7 @@ public class LoginController implements CommunityConstant {
 		}
 		
 		if (StringUtils.isBlank(kaptcha) || StringUtils.isBlank(code) || !kaptcha.equalsIgnoreCase(code)) {
-			model.addAttribute("codeMsg", "好兄弟，你的验证码可不对啊，快点再来一遍。。。");
+			model.addAttribute("codeMsg", "验证码错误！");
 			return "/site/login";
 		}
 		

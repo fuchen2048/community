@@ -18,7 +18,7 @@ public interface ScenicMapper {
      * 查询所有景点信息
      * @return
      */
-    List<Scenic> selectAllScenic();
+    List<Scenic> selectAllScenic(@Param("offset") Integer offset, @Param("limit") Integer limit);
 
     /**
      * 根据id查询景点信息

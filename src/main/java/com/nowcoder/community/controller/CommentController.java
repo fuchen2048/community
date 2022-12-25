@@ -69,10 +69,6 @@ public class CommentController implements CommunityConstant {
 		comment.setStatus(0);
 		comment.setCreateTime(new Date());
 		commentService.addComment(comment);
-
-		discussPostService.updateCommentCount(discussPostId, discussPost.getCommentCount() + 1);
-
-		log.info(discussPost.toString());
 		
 		//触发评论事件
 		Event event = new Event()
@@ -83,11 +79,17 @@ public class CommentController implements CommunityConstant {
 				.setData("postId", discussPostId);
 		
 		if (comment.getEntityType() == ENTITY_TYPE_POST) {
+			//评论
 			DiscussPost target = discussPostService.findDiscussPost(comment.getEntityId());
 			event.setEntityUserId(target.getUserId());
+			eventProducer.fireEvent(event);
+			discussPostService.updateCommentCount(discussPostId, discussPost.getCommentCount() + 1);
+			log.info(discussPost.toString());
 		} else if (comment.getEntityType() == ENTITY_TYPE_COMMENT){
+			//回复
 			Comment target = commentService.findCommentById(comment.getEntityId());
 			event.setEntityUserId(target.getUserId());
+			eventProducer.fireEvent(event);
 		}
 		//触发帖子事件
 		if (comment.getEntityType() == ENTITY_TYPE_POST) {

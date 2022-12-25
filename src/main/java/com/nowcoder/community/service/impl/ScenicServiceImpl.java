@@ -20,8 +20,8 @@ public class ScenicServiceImpl implements ScenicService {
     private ScenicMapper scenicMapper;
 
     @Override
-    public List<Scenic> findAllScenic() {
-        return scenicMapper.selectAllScenic();
+    public List<Scenic> findAllScenic(Integer offset, Integer limit) {
+        return scenicMapper.selectAllScenic(offset, limit);
     }
 
     @Override

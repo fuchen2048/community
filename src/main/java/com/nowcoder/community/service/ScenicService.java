@@ -15,10 +15,10 @@ import java.util.List;
 public interface ScenicService {
 
     /**
-     * 查找全部景区信息
+     * 查找景区信息
      * @return
      */
-    List<Scenic> findAllScenic();
+    List<Scenic> findAllScenic(Integer offset, Integer limit);
 
     /**
      * 根据景点id查询景点信息

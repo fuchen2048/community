@@ -7,7 +7,8 @@
     <!--List<Scenic> selectAllScenic();-->
     <select id="selectAllScenic" resultType="Scenic">
         select id, scenic_name, introduce, content, image_url, price
-        from scenic;
+        from scenic
+        limit #{offset}, #{limit};
     </select>
 
     <!--Scenic selectScenicById(@Param("id") Integer id);-->

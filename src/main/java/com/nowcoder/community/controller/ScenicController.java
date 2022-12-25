@@ -97,14 +97,14 @@ public class ScenicController {
      */
     @GetMapping("/scenic_list")
     public String scenicList(Model model, Page page){
+        Integer scenicCountAll = scenicService.findScenicCountAll();
+        //分页信息
+        page.setLimit(5);
+        page.setPath("/scenic_list");
+        page.setRows(scenicCountAll);
 
         //查询景区
-        List<Scenic> allScenic = scenicService.findAllScenic();
-
-        //分页信息
-        page.setLimit(10);
-        page.setPath("/scenic_list");
-        page.setRows(allScenic.size());
+        List<Scenic> allScenic = scenicService.findAllScenic(page.getOffset(),page.getLimit());
 
         List<Map<String, Object>> scenicList = new ArrayList<>();
         if (allScenic != null && allScenic.size()>0) {
@@ -116,10 +116,10 @@ public class ScenicController {
         }
 
         model.addAttribute("scenicList", scenicList);
-        model.addAttribute("scenicCount", scenicList.size());
+        model.addAttribute("scenicCount", scenicCountAll);
 
 
-        List<Scenic> scenicConllectionList = favoriteService.findCollectionByCount(page.getOffset(), page.getLimit());
+        List<Scenic> scenicConllectionList = favoriteService.findCollectionByCount(0, 4);
         List<Map<String, Object>> scenicListByCount = new ArrayList<>();
 
         if (scenicConllectionList != null && scenicConllectionList.size() > 0) {

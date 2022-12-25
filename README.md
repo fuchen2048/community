@@ -1,4 +1,4 @@
-# niuke社区实现
+# 拼团旅游信息网
 
 **开发工具：**
 IntelliJ IDEA

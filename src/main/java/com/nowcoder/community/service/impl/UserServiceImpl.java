@@ -135,22 +135,22 @@ public class UserServiceImpl implements UserService , CommunityConstant {
 		
 		//空值判断
 		if (StringUtils.isBlank(username)) {
-			map.put("usernameMsg", "老表，账号呢？");
+			map.put("usernameMsg", "请输入账号!");
 			return map;
 		}
 		if (StringUtils.isBlank(password)) {
-			map.put("passwordMsg", "你这没有密码，可不好登录啊！");
+			map.put("passwordMsg", "密码为空！");
 			return map;
 		}
 		
 		//验证账号
 		User user = userMapper.selectByName(username);
 		if (user == null) {
-		    map.put("usernameMsg", "老表，账号是不是搞错了？");
+		    map.put("usernameMsg", "不存在该账号！");
 			return map;
 		}
 		if (user.getStatus() == 0) {
-			map.put("usernameMsg","请老表先去激个活吧！");
+			map.put("usernameMsg","请先激活！");
 			return map;
 		}
 		
@@ -158,7 +158,7 @@ public class UserServiceImpl implements UserService , CommunityConstant {
 		//验证密码
 		password = CommunityUtil.md5(password + user.getSalt());
 		if (!password.equals(user.getPassword())) {
-			map.put("passwordMsg", "？？？,密码好像有点问题。。。你说是吧，老表");
+			map.put("passwordMsg", "密码错误！");
 			return map;
 		}
 		
