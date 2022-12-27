@@ -3,7 +3,6 @@ package com.nowcoder.community;
 import com.nowcoder.community.dao.AlphaDao;
 import com.nowcoder.community.entity.DiscussPost;
 import com.nowcoder.community.entity.User;
-import com.nowcoder.community.service.AlphaService;
 import com.nowcoder.community.service.DiscussPostService;
 import com.nowcoder.community.service.UserService;
 import org.junit.Test;
@@ -42,11 +41,7 @@ class CommunityApplicationTests implements ApplicationContextAware {
 		System.out.println(applicationContext);
 		System.out.println(applicationContext.getBean(AlphaDao.class).select());
 	}
-	
-	@Test
-	public void testBeanManagement(){
-		System.out.println(applicationContext.getBean(AlphaService.class));
-	}
+
 	
 	@Test
 	public void testConfig(){

@@ -2,6 +2,7 @@ package com.nowcoder.community;
 
 import com.nowcoder.community.entity.*;
 import com.nowcoder.community.mapper.*;
+import net.minidev.json.writer.CollectionMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,9 @@ import java.util.List;
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = CommunityApplication.class)
 public class MapperTest {
+
+	@Autowired
+	private FavoriteMapper favoriteMapper;
 
 	@Autowired
 	private UserMapper userMapper;
@@ -168,5 +172,5 @@ public class MapperTest {
 		Integer unreadCount = messageMapper.selectLetterUnreadCount(131, "111_131");
 		System.out.println(unreadCount);
 	}
-	
+
 }
