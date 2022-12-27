@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
 		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.nowcoder.community.mapper.CommentMapper">
+<mapper namespace="com.fuchen.travel.mapper.CommentMapper">
 	<!--List<Comment> selectCommentByEntity(int entityType, int entityId, int offset, int limit);-->
 	<select id="selectCommentByEntity" resultType="Comment">
 		select id, user_id, entity_type, entity_id, target_id, content, status, create_time
@@ -18,7 +18,7 @@
 		from comment
 		where entity_id = #{entityId} and entity_type = #{entityType}
 	</select>
-	<select id="selectCommentById" resultType="com.nowcoder.community.entity.Comment">
+	<select id="selectCommentById" resultType="com.fuchen.travel.entity.Comment">
 		select id, user_id, entity_type, entity_id, target_id, content, status, create_time
 		from comment
 		where id = #{id}

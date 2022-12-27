@@ -3,7 +3,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.nodwcoder.community</groupId>
-	<artifactId>community</artifactId>
+	<artifactId>travel-group</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>community</name>
 	<description>community</description>
@@ -21,12 +21,6 @@
 			<groupId>com.github.ben-manes.caffeine</groupId>
 			<artifactId>caffeine</artifactId>
 			<version>2.7.0</version>
-		</dependency>
-		
-		<dependency>
-			<groupId>com.qiniu</groupId>
-			<artifactId>qiniu-java-sdk</artifactId>
-			<version>7.2.23</version>
 		</dependency>
 		
 		<dependency>
@@ -179,7 +173,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<version>2.3.7.RELEASE</version>
 				<configuration>
-					<mainClass>com.nowcoder.community.CommunityApplication</mainClass>
+					<mainClass>com.fuchen.travel.CommunityApplication</mainClass>
 				</configuration>
 				<executions>
 					<execution>

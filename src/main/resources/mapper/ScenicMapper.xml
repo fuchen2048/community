@@ -2,12 +2,13 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.nowcoder.community.mapper.ScenicMapper">
+<mapper namespace="com.fuchen.travel.mapper.ScenicMapper">
 
     <!--List<Scenic> selectAllScenic();-->
     <select id="selectAllScenic" resultType="Scenic">
         select id, scenic_name, introduce, content, image_url, price
-        from scenic;
+        from scenic
+        limit #{offset}, #{limit};
     </select>
 
     <!--Scenic selectScenicById(@Param("id") Integer id);-->

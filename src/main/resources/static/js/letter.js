@@ -34,6 +34,10 @@ function delete_msg() {
 	$(this).parents(".media").remove();
 }
 
-function back(){
+function backLetter(){
 	location.href = CONTEXT_PATH + "/letter/list";
+}
+
+function backNotice(){
+	location.href = CONTEXT_PATH + "/notice/list";
 }

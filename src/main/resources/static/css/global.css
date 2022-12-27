@@ -22,7 +22,7 @@ body {
 }
 
 header .navbar-brand {
-	background: url('http://localhost:9000/community/img/logo_1.ico') no-repeat;
+	background: url('http://localhost:9000/travel/img/logo_1.ico') no-repeat;
 	background-size: 147px 42px;
 	width: 147px;
 	height: 42px;
@@ -137,15 +137,6 @@ a:hover {
 	background: #eff0f2;
 }
 
-/**
-导航栏颜色
- */
-.bg-blue {
-	background: #2388e7;
-}
-/**
-登录按钮颜色
- */
 .btn-customColor {
 	background-color: #2388e7;
 }
