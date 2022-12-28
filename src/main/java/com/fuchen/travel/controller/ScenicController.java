@@ -51,7 +51,7 @@ public class ScenicController {
      * @param model
      * @return
      */
-    @GetMapping("/scenic_detail/{scenicId}")
+    @GetMapping("/scenic-detail/{scenicId}")
     public String getScenicDetail (@PathVariable("scenicId") Integer scenicId, Model model){
 
         //查询景区详情
@@ -82,11 +82,11 @@ public class ScenicController {
             //查询景点收藏次数
             Integer collectionCount = favoriteService.getCollectionCount(scenicId);
             model.addAttribute("collectionCount", collectionCount);
-            return "/site/scenic_detail";
+            return "/site/scenic-detail";
         } else {
 
             model.addAttribute("collectionCount",  favoriteService.getCollectionCount(scenicId));
-            return "/site/scenic_detail";
+            return "/site/scenic-detail";
         }
     }
 
@@ -94,7 +94,7 @@ public class ScenicController {
      * 请求景点列表
      * @return 景点列表页面
      */
-    @GetMapping("/scenic_list")
+    @GetMapping("/scenic-list")
     public String scenicList(Model model, Page page){
         Integer scenicCountAll = scenicService.findScenicCountAll();
         //分页信息
@@ -128,9 +128,9 @@ public class ScenicController {
                 scenicListByCount.add(map);
             }
         }
-
         model.addAttribute("scenicsHot", scenicListByCount);
-        return "/site/scenic_list";
+
+        return "/site/scenic-list";
     }
 
     /**

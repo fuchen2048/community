@@ -2,12 +2,10 @@ package com.fuchen.travel.event;
 
 import com.alibaba.fastjson.JSONObject;
 import com.fuchen.travel.util.TravelConstant;
-import com.fuchen.travel.util.TravelUtil;
 import com.fuchen.travel.entity.DiscussPost;
 import com.fuchen.travel.entity.Event;
 import com.fuchen.travel.entity.Message;
 import com.fuchen.travel.service.DiscussPostService;
-import com.fuchen.travel.service.ElasticsearchService;
 import com.fuchen.travel.service.MessageService;
 
 import org.apache.kafka.clients.consumer.ConsumerRecord;
@@ -37,8 +35,6 @@ public class EventConsumer implements TravelConstant {
     @Autowired
     private DiscussPostService discussPostService;
 
-    @Autowired
-    private ElasticsearchService elasticsearchService;
 
     @Value("${wk.image.command}")
     private String wkImageCommand;
@@ -108,7 +104,7 @@ public class EventConsumer implements TravelConstant {
         }
 
         DiscussPost post = discussPostService.findDiscussPost(event.getEntityId());
-        elasticsearchService.saveDiscussPost(post);
+        //elasticsearchService.saveDiscussPost(post);
     }
 
     // 消费删帖事件
@@ -125,7 +121,7 @@ public class EventConsumer implements TravelConstant {
             return;
         }
 
-        elasticsearchService.deleteDiscussPost(event.getEntityId());
+        //elasticsearchService.deleteDiscussPost(event.getEntityId());
     }
 
     // 消费分享事件

@@ -82,4 +82,21 @@ public interface DiscussPostService {
 	 * @return
 	 */
 	List<DiscussPost> findDiscussPostByUserId (Integer userId, Integer offset, Integer limit);
+
+	/**
+	 * 根据关键词查询帖子总数
+	 * @param keyword
+	 * @return
+	 */
+    Integer findDiscussPostToKeywordCount(String keyword);
+
+
+	/**
+	 * 根据关键词分页查询帖子
+	 * @param keyword
+	 * @param offset
+	 * @param limit
+	 * @return
+	 */
+	List<DiscussPost> findToDiscussPost(String keyword, Integer offset, Integer limit);
 }

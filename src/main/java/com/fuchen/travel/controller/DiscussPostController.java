@@ -40,10 +40,8 @@ public class DiscussPostController implements TravelConstant {
 	
 	@Autowired
 	private EventProducer eventProducer;
-	
-	@Autowired
-	private ElasticsearchService elasticsearchService;
-	
+
+
 	@Autowired
 	private RedisTemplate redisTemplate;
 

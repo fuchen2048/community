@@ -23,4 +23,19 @@
         select count(*)
         from scenic
     </select>
+
+    <!--List<Scenic> selectScenicByScenicName(@Param("scenicName") String scenicName);-->
+    <select id="selectScenicByScenicName" resultType="Scenic">
+        SELECT id, scenic_name, introduce, content, image_url, notice, price, address, create_time
+        FROM scenic
+        WHERE scenic_name LIKE "%"#{scenicName}"%"
+        LIMIT #{offset}, #{limit};
+    </select>
+
+    <!-- 根据关键字查询景区数量 -->
+    <select id="selectToScenicCount" resultType="Integer">
+        SELECT COUNT(*)
+        FROM scenic
+        where scenic_name LIKE "%"#{keyword}"%";
+    </select>
 </mapper>

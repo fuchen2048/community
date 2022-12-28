@@ -36,7 +36,7 @@
 
 							<!--景点-->
 							<li class="nav-item ml-3 btn-group-vertical">
-								<a class="nav-link" th:href="@{/scenic_list}">景区信息</a>
+								<a class="nav-link" th:href="@{/scenic-list}">景区信息</a>
 							</li>
 
 							<!--拼团-->
@@ -80,9 +80,9 @@
 						</ul>
 
 						<!-- 搜索 -->
-						<form class="form-inline my-2 my-lg-0" method="get" th:action="@{/search}" style="margin-right: 125px" th:if="${loginUser!=null}">
+						<form class="form-inline my-2 my-lg-0" method="get" th:action="@{/scenic-list/search}" style="margin-right: 125px" th:if="${loginUser!=null}">
 							<input class="form-control mr-sm-2" type="search" aria-label="Search" name="keyword" th:value="${keyword}"/>
-							<button class="btn btn-outline-success btn-light my-2 my-sm-0" type="button">搜索</button>
+							<button class="btn btn-outline-success btn-light my-2 my-sm-0" type="submit">搜索</button>
 						</form>
 
 					</div>
@@ -143,7 +143,7 @@
 
 								<!--循环展示-->
 								<div class="col-md-3" th:each="scenicList:${scenicConllectionList}">
-									<a th:href="@{|/scenic_detail/${scenicList.scenic.id}|}">
+									<a th:href="@{|/scenic-detail/${scenicList.scenic.id}|}">
 										<div class="card" style="width: 18rem;">
 											<img th:src="${scenicList.scenic.imageUrl}" class="card-img-top" alt="...">
 											<div class="card-body">
@@ -174,8 +174,8 @@
 					<div class="guonei_l">
 						<img th:src="@{/img/jingwai_bali.jpg}" alt="">
 					</div>
-					<div class="guone_r" >
-						<div class="row" id="indexroutelis">
+					<div class="guone_r">
+						<div class="row" id="indexroutelis" style="margin-right: 16px">
 
 							<div class="col-md-4" >
 								<a href="route_detail.html">
@@ -202,7 +202,7 @@
 								<a href="route_detail.html">
 									<div class="card" style="width: 18rem;">
 										<img th:src="@{/img/jiangxuan_4.jpg}" class="card-img-top" alt="...">
-										<div class="card-body">
+										<div class="card-body" style="width: 18rem;">
 											<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
 										</div>
 									</div>

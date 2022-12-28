@@ -56,7 +56,22 @@
 		from discuss_post
 		where id = #{id}
 	</select>
-	
+
+	<!--模糊查询帖子总数-->
+    <select id="selectToKeywordCount" resultType="Integer">
+		SELECT COUNT(*)
+		FROM discuss_post
+		WHERE discuss_post.status != 2 AND title LIKE "%"#{keyword}"%"
+	</select>
+
+	<!-- 模糊查询帖子 -->
+	<select id="selectToDiscussionPost" resultType="DiscussPost">
+		SELECT *
+		FROM discuss_post
+		where discuss_post.status != 2 AND title LIKE "%"#{keyword}"%"
+		LIMIT #{offset}, #{limit}
+	</select>
+
 	<!--int updateCommentCount(int id, int commentCount);-->
 	<update id="updateCommentCount">
 		update discuss_post

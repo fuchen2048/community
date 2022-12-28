@@ -4,7 +4,6 @@ import com.fuchen.travel.entity.DiscussPost;
 import com.fuchen.travel.util.TravelConstant;
 import com.fuchen.travel.util.RedisKeyUtil;
 import com.fuchen.travel.service.DiscussPostService;
-import com.fuchen.travel.service.ElasticsearchService;
 import com.fuchen.travel.service.LikeService;
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
@@ -37,9 +36,7 @@ public class PostScoreRefreshJob implements Job, TravelConstant {
 	
 	@Autowired
 	private LikeService likeService;
-	
-	@Autowired
-	private ElasticsearchService elasticsearchService;
+
 	
 	private static final Date epoch;
 	
@@ -89,7 +86,6 @@ public class PostScoreRefreshJob implements Job, TravelConstant {
 		discussPostService.updateScore(postId, score);
 		//同步搜索数据
 		post.setScore(score);
-		elasticsearchService.saveDiscussPost(post);
 		
 	}
 }

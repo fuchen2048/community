@@ -83,5 +83,20 @@ public interface DiscussPostMapper {
 	 * @return
 	 */
 	List<DiscussPost> selectDiscussPostByUserId(@Param("id") Integer id, @Param("offset") Integer offset, @Param("limit") Integer limit);
-	
+
+	/**
+	 * 根据关键词查询帖子总数
+	 * @param keyword
+	 * @return
+	 */
+    Integer selectToKeywordCount(@Param("keyword") String keyword);
+
+	/**
+	 * 根据关键词查询帖子
+	 * @param keyword
+	 * @param offset
+	 * @param limit
+	 * @return
+	 */
+	List<DiscussPost> selectToDiscussionPost(@Param("keyword") String keyword, @Param("offset") Integer offset, @Param("limit") Integer limit);
 }

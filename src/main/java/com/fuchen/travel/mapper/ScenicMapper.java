@@ -33,4 +33,18 @@ public interface ScenicMapper {
      */
     Integer selectScenicCountAll();
 
+
+    /**
+     * 通过景区名称查询景区信息
+     * @param scenicName 景区名称
+     * @return 景区信息集合
+     */
+    List<Scenic> selectScenicByScenicName(@Param("scenicName") String scenicName, @Param("offset") Integer offset, @Param("limit") Integer limit);
+
+    /**
+     * 通过关键字查询景区数量
+     * @param keyword 关键字
+     * @return
+     */
+    Integer selectToScenicCount(@Param("keyword") String keyword);
 }

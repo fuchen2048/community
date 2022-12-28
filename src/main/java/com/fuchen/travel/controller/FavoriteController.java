@@ -71,7 +71,7 @@ public class FavoriteController {
         model.addAttribute("myFavorite", scenicList);
         model.addAttribute("myFavoriteCount", myFavoriteCount);
 
-        return "/site/myfavorite";
+        return "/site/my-favorite";
     }
 
     /**

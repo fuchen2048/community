@@ -153,4 +153,14 @@ public class DiscussPostServiceImpl implements DiscussPostService {
 		List<DiscussPost> discussPosts = discussPostMapper.selectDiscussPostByUserId(userId, offset, limit);
 		return discussPosts;
 	}
+
+	@Override
+	public Integer findDiscussPostToKeywordCount(String keyword) {
+		return discussPostMapper.selectToKeywordCount(keyword);
+	}
+
+	@Override
+	public List<DiscussPost> findToDiscussPost(String keyword, Integer offset, Integer limit) {
+		return discussPostMapper.selectToDiscussionPost(keyword, offset, limit);
+	}
 }
