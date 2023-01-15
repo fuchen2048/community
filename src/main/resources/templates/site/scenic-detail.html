@@ -38,29 +38,14 @@
 
                     <!--图片与价格信息-->
                     <div class="prosum_box">
-                        <dl class="prosum_left">
+                        <dl class="prosum_left" style="width: 600px">
                             <dt id="bigImg">
                                 <img alt="" class="big_img"
                                      th:src="${scenic.imageUrl}">
-                                <!-- <img alt="" class="big_img" src="http://www.jinmalvyou.com/Public/uploads/goods_img/img_size4/201703/m49788843d72171643297ccc033d9288ee.jpg"> -->
                             </dt>
-
-                            <dd id="dd">
-                                <a class="up_img up_img_disable" ></a>
-
-                                <!--<a title="" class="little_img" th:data-bigpic="http://www.jinmalvyou.com/Public/uploads/goods_img/img_size4/201703/m40920d0669855e745d97f9ad1df966ebb.jpg">-->
-                                <a title="" class="little_img">
-                                <!--<img th:src="${scenicImages.image}">-->
-                                    <img th:src="${scenic.imageUrl}">
-                                </a>
-                                <!--<a  title="" class="little_img" data-bigpic="http://www.jinmalvyou.com/Public/uploads/goods_img/img_size4/201703/m40920d0669855e745d97f9ad1df966ebb.jpg">-->
-                                <!--    <img src="http://www.jinmalvyou.com/Public/uploads/goods_img/img_size2/201703/m20920d0669855e745d97f9ad1df966ebb.jpg">-->
-                                <!--</a>-->
-                                <a class="down_img down_img_disable" style="margin-bottom: 0;"></a>
-                            </dd>
                         </dl>
                         <!--文本信息-->
-                        <div class="prosum_right" >
+                        <div class="prosum_right" style="width: 500px">
                             <p class="pros_title"><span id="rname" th:text="${scenic.introduce}">故宫又名紫禁城，是中国乃至世界上保存最完整，规模最大的木质结构古建筑群，被誉为“世界五大宫之首”。</span></p>
                             <p class="hot"><span id="routeIntroduce" th:text="${scenic.content}">故宫需要从南到北参观，午门是唯一的入口，出口是东华门和神武门。</span></p>
                             <div class="pros_other">

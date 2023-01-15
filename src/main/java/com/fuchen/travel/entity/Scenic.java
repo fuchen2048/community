@@ -27,5 +27,6 @@ public class Scenic {
     private String phone;
     private String address;
     private Date createTime;
+    private Integer status;
 
 }

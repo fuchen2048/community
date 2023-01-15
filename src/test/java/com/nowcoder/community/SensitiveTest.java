@@ -1,6 +1,7 @@
 package com.nowcoder.community;
 
-import com.nowcoder.community.util.SensitiveFilter;
+import com.fuchen.travel.TravelApplication;
+import com.fuchen.travel.util.SensitiveFilter;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,7 @@ import org.springframework.test.context.junit4.SpringRunner;
  */
 @SpringBootTest
 @RunWith(SpringRunner.class)
-@ContextConfiguration(classes = CommunityApplication.class)
+@ContextConfiguration(classes = TravelApplication.class)
 public class SensitiveTest {
 
 	@Autowired

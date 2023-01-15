@@ -31,8 +31,8 @@
 		from user
 		where email = #{email}
 	</select>
-	
-	<!--Integer insertUser(User user);-->
+
+    <!--Integer insertUser(User user);-->
 	<insert id="insertUser" parameterType="User" keyProperty="id">
 		insert into user (<include refid="insertFields"></include>)
 		values (#{username}, #{password}, #{salt}, #{email}, #{type},#{status}, #{activationCode},#{headerUrl},#{createTime})

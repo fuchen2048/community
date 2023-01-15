@@ -73,6 +73,13 @@ public class UserController implements TravelConstant {
 		return "/site/setting";
 	}
 
+
+	/**
+	 * 修改密码
+	 * @param oldPassword 旧密码
+	 * @param newPassword 新密码
+	 * @return
+	 */
 	@PostMapping("/updatePassword")
 	@ResponseBody
 	public String updatePassword(String oldPassword, String newPassword) {

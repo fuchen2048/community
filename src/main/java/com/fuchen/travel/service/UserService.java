@@ -92,7 +92,6 @@ public interface UserService {
 	/**
 	 * 根据userId修改密码
 	 * @param user 用户
-	 * @param password 新密码
 	 * @return
 	 */
 	Integer updatePasswordByUserId(User user);

@@ -1,8 +1,8 @@
 package com.nowcoder.community;
 
-import com.nowcoder.community.dao.elasticesearch.DiscussPostRepository;
-import com.nowcoder.community.entity.DiscussPost;
-import com.nowcoder.community.mapper.DiscussPostMapper;
+import com.fuchen.travel.TravelApplication;
+import com.fuchen.travel.entity.DiscussPost;
+import com.fuchen.travel.mapper.DiscussPostMapper;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.search.SearchHit;
@@ -37,24 +37,16 @@ import java.util.List;
  */
 @SpringBootTest
 @RunWith(SpringRunner.class)
-@ContextConfiguration(classes = CommunityApplication.class)
+@ContextConfiguration(classes = TravelApplication.class)
 public class ElasticsearchTest {
 
 	@Autowired
 	private DiscussPostMapper discussPostMapper;
-	
-	@Autowired
-	private DiscussPostRepository discussPostRepository;
+
 	
 	@Autowired
 	private ElasticsearchTemplate elasticsearchTemplate;
-	
-	@Test
-	public void testInsert(){
-		discussPostRepository.save(discussPostMapper.selectDiscussPost(241));
-		discussPostRepository.save(discussPostMapper.selectDiscussPost(242));
-		discussPostRepository.save(discussPostMapper.selectDiscussPost(243));
-	}
+
 	
 	
 	@Test
@@ -82,15 +74,15 @@ public class ElasticsearchTest {
 					new HighlightBuilder.Field("title").preTags("<em>").postTags("</em>"),
 					new HighlightBuilder.Field("content").preTags("<em>").postTags("</em>")
 				).build();
-		Page<DiscussPost> page = discussPostRepository.search(searchQuery);
-		System.out.println(page.getTotalElements());
-		System.out.println(page.getTotalPages());
-		System.out.println(page.getNumber());
-		System.out.println(page.getSize());
+		//Page<DiscussPost> page = discussPostRepository.search(searchQuery);
+		//System.out.println(page.getTotalElements());
+		//System.out.println(page.getTotalPages());
+		//System.out.println(page.getNumber());
+		//System.out.println(page.getSize());
 		
-		for (DiscussPost post : page) {
-			System.out.println(post);
-		}
+		//for (DiscussPost post : page) {
+		//	System.out.println(post);
+		//}
 		
 	}
 	

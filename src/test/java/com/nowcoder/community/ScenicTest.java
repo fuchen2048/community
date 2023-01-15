@@ -1,8 +1,9 @@
 package com.nowcoder.community;
 
-import com.nowcoder.community.entity.Scenic;
-import com.nowcoder.community.mapper.FavoriteMapper;
-import com.nowcoder.community.mapper.ScenicMapper;
+import com.fuchen.travel.TravelApplication;
+import com.fuchen.travel.entity.Scenic;
+import com.fuchen.travel.mapper.FavoriteMapper;
+import com.fuchen.travel.mapper.ScenicMapper;
 import javafx.beans.binding.When;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
@@ -22,7 +23,7 @@ import java.util.List;
 @Slf4j
 @SpringBootTest
 @RunWith(SpringRunner.class)
-@ContextConfiguration(classes = CommunityApplication.class)
+@ContextConfiguration(classes = TravelApplication.class)
 public class ScenicTest {
     @Autowired
     private FavoriteMapper favoriteMapper;
@@ -48,12 +49,4 @@ public class ScenicTest {
         }
     }
 
-    @Test
-    public void ListScenicCountAllTest(){
-        List<Scenic> scenicList = favoriteMapper.selectCollectionCountASC(0);
-        Iterator<Scenic> iterator = scenicList.iterator();
-        while (iterator.hasNext()) {
-            log.info(iterator.next().getScenicName());
-        }
-    }
 }

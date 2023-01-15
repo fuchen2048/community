@@ -47,4 +47,10 @@ public interface ScenicMapper {
      * @return
      */
     Integer selectToScenicCount(@Param("keyword") String keyword);
+
+    /**
+     * 查询推荐的景点
+     * @return
+     */
+    List<Scenic> selectScenicRe();
 }

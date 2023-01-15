@@ -48,8 +48,6 @@ public class UserServiceImpl implements UserService, TravelConstant {
 	
 	@Override
 	public User findById(Integer id) {
-		//清楚redis中的user数据
-		clearCache(id);
 		//通过redis自动去数据库中查询新的user
 		User user = getCache(id);
 		if (user == null) {
@@ -112,7 +110,8 @@ public class UserServiceImpl implements UserService, TravelConstant {
 		mailClient.sendMail(user.getEmail(), "激活账号", content);
 		return map;
 	}
-	
+
+	@Override
 	public Integer activation(Integer userId, String code){
 		User user = userMapper.selectById(userId);
 		if (user.getStatus() == 1) {
@@ -183,6 +182,7 @@ public class UserServiceImpl implements UserService, TravelConstant {
 		LoginTicket loginTicket = (LoginTicket) redisTemplate.opsForValue().get(redisKey);
 		loginTicket.setStatus(1);
 		redisTemplate.opsForValue().set(redisKey, loginTicket);
+		clearCache(loginTicket.getUserId());
 	}
 	
 	@Override
@@ -235,6 +235,8 @@ public class UserServiceImpl implements UserService, TravelConstant {
 
 	@Override
 	public Integer updatePasswordByUserId(User user) {
+		//清除redis缓存
+		clearCache(user.getId());
 		//调用mapper层根据userId修改密码
 		return userMapper.updatePassword(user.getId(), user.getPassword());
 	}

@@ -1,7 +1,8 @@
 package com.nowcoder.community;
 
-import com.nowcoder.community.entity.*;
-import com.nowcoder.community.mapper.*;
+import com.fuchen.travel.TravelApplication;
+import com.fuchen.travel.entity.*;
+import com.fuchen.travel.mapper.*;
 import net.minidev.json.writer.CollectionMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,7 +21,7 @@ import java.util.List;
  */
 @SpringBootTest
 @RunWith(SpringRunner.class)
-@ContextConfiguration(classes = CommunityApplication.class)
+@ContextConfiguration(classes = TravelApplication.class)
 public class MapperTest {
 
 	@Autowired

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="fastRequestCurrentProjectConfig">
+    <option name="cookieList">
+      <list>
+        <DataMapping>
+          <option name="type" value="localhost:9000" />
+          <option name="value" value="JSESSIONID=DF05CA6622665761552EB1B7E7910974" />
+        </DataMapping>
+      </list>
+    </option>
+    <option name="domain" value="localhost:9200" />
+    <option name="enableEnv" value="test" />
+    <option name="enableProject" value="test" />
+  </component>
+</project>

@@ -176,64 +176,12 @@
 					</div>
 					<div class="guone_r">
 						<div class="row" id="indexroutelis" style="margin-right: 16px">
-
-							<div class="col-md-4" >
-								<a href="route_detail.html">
-									<div class="card" style="width: 18rem;">
-										<img th:src="@{/img/jiangxuan_4.jpg}" class="card-img-top" alt="...">
-										<div class="card-body">
-											<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-										</div>
-									</div>
-								</a>
-							</div>
-
-							<div class="col-md-4">
-								<a href="route_detail.html">
-									<div class="card" style="width: 18rem;">
-										<img th:src="@{/img/jiangxuan_4.jpg}" class="card-img-top" alt="...">
-										<div class="card-body">
-											<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-										</div>
-									</div>
-								</a>
-							</div>
-							<div class="col-md-4">
-								<a href="route_detail.html">
-									<div class="card" style="width: 18rem;">
-										<img th:src="@{/img/jiangxuan_4.jpg}" class="card-img-top" alt="...">
-										<div class="card-body" style="width: 18rem;">
-											<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-										</div>
-									</div>
-								</a>
-							</div>
-							<div class="col-md-4">
-								<a href="route_detail.html">
-									<div class="card" style="width: 18rem;">
-										<img th:src="@{/img/jiangxuan_4.jpg}" class="card-img-top" alt="...">
-										<div class="card-body">
-											<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-										</div>
-									</div>
-								</a>
-							</div>
-							<div class="col-md-4">
-								<a href="route_detail.html">
-									<div class="card" style="width: 18rem;">
-										<img th:src="@{/img/jiangxuan_4.jpg}" class="card-img-top" alt="...">
-										<div class="card-body">
-											<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-										</div>
-									</div>
-								</a>
-							</div>
-							<div class="col-md-4">
-								<a href="route_detail.html">
-									<div class="card" style="width: 18rem;">
-										<img th:src="@{/img/jiangxuan_4.jpg}" class="card-img-top" alt="...">
-										<div class="card-body">
-											<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+							<div class="col-md-4"  th:each="scenics:${scenicListByRe}">
+								<a th:href="@{|/scenic-detail/${scenics.scenic.id}|}">
+									<div class="card" style="width: 260px;" >
+										<img th:src="${scenics.scenic.imageUrl}" class="card-img-top" style="height: 159px" alt="...">
+										<div class="card-body" style="height: 100px">
+											<p class="card-text" th:text="${scenics.scenic.introduce}"></p>
 										</div>
 									</div>
 								</a>

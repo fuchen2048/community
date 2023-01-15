@@ -254,7 +254,6 @@ public class LoginController implements TravelConstant {
 		User user = userService.updatePassword(email, password);
 
 
-
 		return "/site/login";
 	}
 

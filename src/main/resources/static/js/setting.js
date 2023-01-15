@@ -51,7 +51,7 @@ function updatePassword() {
     }
 
     function countDownTime(data) {
-        var sec = 5;
+        var sec = 2;
         time = setInterval(function() {
             sec --;
             alert(data + " " + sec + "s 后自动跳转到登录页面！" );

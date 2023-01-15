@@ -1,10 +1,11 @@
 package com.nowcoder.community;
 
-import com.nowcoder.community.dao.AlphaDao;
-import com.nowcoder.community.entity.DiscussPost;
-import com.nowcoder.community.entity.User;
-import com.nowcoder.community.service.DiscussPostService;
-import com.nowcoder.community.service.UserService;
+
+import com.fuchen.travel.TravelApplication;
+import com.fuchen.travel.entity.DiscussPost;
+import com.fuchen.travel.entity.User;
+import com.fuchen.travel.service.DiscussPostService;
+import com.fuchen.travel.service.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.BeansException;
@@ -20,7 +21,7 @@ import java.util.Date;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
-@ContextConfiguration(classes = CommunityApplication.class)
+@ContextConfiguration(classes = TravelApplication.class)
 class CommunityApplicationTests implements ApplicationContextAware {
 	
 	@Autowired
@@ -35,12 +36,7 @@ class CommunityApplicationTests implements ApplicationContextAware {
 	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
 		this.applicationContext = applicationContext;
 	}
-	
-	@Test
-	public void testApplicationContext(){
-		System.out.println(applicationContext);
-		System.out.println(applicationContext.getBean(AlphaDao.class).select());
-	}
+
 
 	
 	@Test

@@ -33,4 +33,13 @@ public class ScenicServiceImpl implements ScenicService {
     public Integer findScenicCountAll() {
         return scenicMapper.selectScenicCountAll();
     }
+
+    /**
+     * 获取推荐的景点
+     * @return
+     */
+    @Override
+    public List<Scenic> getScenicRe() {
+        return scenicMapper.selectScenicRe();
+    }
 }

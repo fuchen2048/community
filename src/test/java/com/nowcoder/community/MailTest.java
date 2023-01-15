@@ -1,6 +1,7 @@
 package com.nowcoder.community;
 
-import com.nowcoder.community.util.MailClient;
+import com.fuchen.travel.TravelApplication;
+import com.fuchen.travel.util.MailClient;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,7 @@ import org.thymeleaf.context.Context;
  */
 @SpringBootTest
 @RunWith(SpringRunner.class)
-@ContextConfiguration(classes = CommunityApplication.class)
+@ContextConfiguration(classes = TravelApplication.class)
 public class MailTest {
 	@Autowired
 	private MailClient mailClient;

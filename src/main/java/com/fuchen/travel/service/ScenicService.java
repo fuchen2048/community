@@ -10,7 +10,7 @@ import java.util.List;
  * @Date 2022/11/27
  * 景区-业务层-接口
  */
-@Service
+
 public interface ScenicService {
 
     /**
@@ -31,4 +31,10 @@ public interface ScenicService {
      * @return
      */
     Integer findScenicCountAll();
+
+    /**
+     * 获取推荐的景点
+     * @return
+     */
+    List<Scenic> getScenicRe();
 }
